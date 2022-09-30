@@ -18,6 +18,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap-4.4.1.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/loginform.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/mainmenu.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -78,6 +83,18 @@
         <main class="py-4">
             @yield('content')
         </main>
+
     </div>
+
+
+    <script src="{{ asset('js/vue.js') }}"></script>
+    <script src="{{ asset('js/vuelidate.min.js') }}"></script>
+    <script src="{{ asset('js/validators.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-library.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/salary-calculator.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-4.4.1.js') }}"></script>
 </body>
 </html>
