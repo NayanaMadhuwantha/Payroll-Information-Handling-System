@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('username',30);
             $table->string('email',50)->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password',30);
+            $table->string('password');
             $table->string('position',30);
             $table->string('etf_epf_number',30)->nullable();
             $table->string('full_name',50)->nullable();
