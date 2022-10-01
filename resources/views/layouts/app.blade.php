@@ -17,11 +17,16 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/bootstrap-4.4.1.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/loginform.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/main.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/mainmenu.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet"> 
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/ckeditor.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/fullcalendar.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/line-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
 
 </head>
 <body>
@@ -86,8 +91,32 @@
 
     </div>
 
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="{{ asset('js/chart.js') }}"></script>
+    <script src="{{ asset('js/Chart.min.js') }}"></script>
+    <script src="{{ asset('js/ckeditor.js') }}"></script>
+    <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('js/dropfiles.js') }}"></script>
+    <script src="{{ asset('js/fullcalendar.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.fullcalendar.js') }}"></script>
+    <script src="{{ asset('js/jquery.maskedinput.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.ui.touch-punch.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/line-chart.js') }}"></script>
+    <script src="{{ asset('js/mask.js') }}"></script>
+    <script src="{{ asset('js/moment.min.js') }}"></script>
+    <script src="{{ asset('js/multiselect.min.js') }}"></script>
+    <script src="{{ asset('js/select2.min.js') }}"></script>
+    <script src="{{ asset('js/task.js') }}"></script>
 
-    <script src="{{ asset('js/vue.js') }}"></script>
+
+
+    <!-- <script src="{{ asset('js/vue.js') }}"></script>
     <script src="{{ asset('js/vuelidate.min.js') }}"></script>
     <script src="{{ asset('js/validators.min.js') }}"></script>
     <script src="{{ asset('js/jquery-library.js') }}"></script>
@@ -95,6 +124,6 @@
     <script src="{{ asset('js/salary-calculator.js') }}"></script>
     <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap-4.4.1.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-4.4.1.js') }}"></script> -->
 </body>
 </html>
