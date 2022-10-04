@@ -20,6 +20,8 @@ class CreateLeavesTable extends Migration
             $table->date('start_date');
             $table->date('end_date')->nullable();
             $table->float('no_of_days');
+            $table->string('status')->default('Pending');
+            $table->text('reason')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

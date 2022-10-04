@@ -24,7 +24,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/allowance', [App\Http\Controllers\AllowanceController::class, 'index'])->name('allowance');
     Route::get('/attendance', [App\Http\Controllers\AttendanceController::class, 'index'])->name('attendance');
     Route::get('/deduction', [App\Http\Controllers\DeductionController::class, 'index'])->name('deduction');
+
     Route::get('/leave', [App\Http\Controllers\LeaveController::class, 'index'])->name('leave');
+    Route::post('/leave', [App\Http\Controllers\LeaveController::class, 'store'])->name('leave.store');
+
     Route::get('/loan', [App\Http\Controllers\LoanController::class, 'index'])->name('loan');
     Route::get('/month-salary', [App\Http\Controllers\SalaryController::class, 'index'])->name('month-salary');
 

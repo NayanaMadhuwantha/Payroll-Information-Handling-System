@@ -48,47 +48,35 @@
 
 
                     <div class="row">
-                        <div class="col-md-3">
-                            <div class="stats-info">
-                                <h6>Annual Leave</h6>
-                                <h4>12</h4>
+                        @foreach($available_leaves as $available_leave)
+                            <div class="col-md-3">
+                                <div class="stats-info">
+                                    <h6>{{ $available_leave->type->name }}</h6>
+                                    <h4>{{ $available_leave->no_of_leaves }}</h4>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="stats-info">
-                                <h6>Medical Leave</h6>
-                                <h4>3</h4>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="stats-info">
-                                <h6>Other Leave</h6>
-                                <h4>4</h4>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="stats-info">
-                                <h6>Remaining Leave</h6>
-                                <h4>5</h4>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
 
 
-                    <form>
+                    <form action="{{ route('leave.store') }}" method="post">
+                        @csrf
                         <div class="form-group row">
-                            <label class="col-form-label col-md-2">Employee ID</label>
+                            <label class="col-form-label col-md-2">Employee</label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control">
+                                <select class="select" name="user">
+                                    @foreach($users as $user)
+                                        <option value="{{ $user->id }}">{{ $user->username }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <label class="col-form-label col-md-2">Leave Type</label>
                             <div class="col-md-4">
-                                <select class="select">
-                                    <option>Select Leave Type</option>
-                                    <option>Casual Leave 12 Days</option>
-                                    <option>Medical Leave</option>
-                                    <option>Loss of Pay</option>
-                                    </select>
+                                <select class="select" name="leave_type">
+                                    @foreach($remaining_leaves as $remaining_leave)
+                                        <option value="{{ $remaining_leave->leave_type_id }}">{{ $remaining_leave->type->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -96,24 +84,31 @@
                             <div class="col-md-4">
 
                                 <div class="cal-icon">
-                                    <input class="form-control datetimepicker" type="text">
+                                    <input name="start_date" class="form-control datetimepicker" type="date" required>
                                 </div>
                             </div>
                             <label class="col-form-label col-md-2">End Date</label>
                             <div class="col-md-4">
                                 <div class="cal-icon">
-                                    <input class="form-control datetimepicker" type="text">
+                                    <input name="end_date" class="form-control datetimepicker" type="date">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-md-2">Reason</label>
+                            <div class="col-md-10">
+                                <div class="cal-icon">
+                                    <textarea  name="reason" class="form-control" ></textarea>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-form-label col-md-2">No. of Days</label>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control">
-                            </div>
+                        @isset($message)
+                        <div style="text-align: center">
+                            {{$message}}
                         </div>
-
-
+                        @endisset
                         <div class="submit-section mt-2 mb-4">
                             <button class="btn btn-success submit-btn">Apply</button>
                             <button class="btn btn-danger submit-btn">Cancel</button>
@@ -137,22 +132,16 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        @foreach($approved_leaves as $approved_leave)
                                             <tr>
                                                 <td>1</td>
-                                                <td>Casual</td>
-                                                <td>19 Feb 2019</td>
-                                                <td>24 Feb 2019</td>
-                                                <td>4</td>
-                                                <td>reason 01</td>
+                                                <td>{{ $approved_leave->type->name }}</td>
+                                                <td>{{ $approved_leave->start_date }}</td>
+                                                <td>{{ $approved_leave->end_date }}</td>
+                                                <td>{{ $approved_leave->no_of_days }} days</td>
+                                                <td>{{ $approved_leave->reason }}</td>
                                             </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Casual</td>
-                                                <td>20 Feb 2019</td>
-                                                <td>24 Feb 2019</td>
-                                                <td>4</td>
-                                                <td>reason 01</td>
-                                            </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -201,16 +190,25 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        @foreach($all_leaves as $leave)
                                             <tr>
-                                                <td>Casual Leave</td>
-                                                <td>8 Mar 2019</td>
-                                                <td>9 Mar 2019</td>
-                                                <td>2 days</td>
-                                                <td>Going to Hospital</td>
+                                                <td>{{ $leave->type->name }}</td>
+                                                <td>{{ $leave->start_date }}</td>
+                                                <td>{{ $leave->end_date }}</td>
+                                                <td>{{ $leave->no_of_days }} days</td>
+                                                <td>{{ $leave->reason }}</td>
                                                 <td class="text-center">
                                                     <div class="action-label">
                                                         <a class="btn btn-white btn-sm btn-rounded" href="javascript:void(0);">
-                                                            <i class="fa fa-dot-circle-o text-purple"></i> New
+                                                            <i class="fa fa-dot-circle-o
+                                                            @if($leave->status == 'Pending')
+                                                                text-purple
+                                                            @elseif($leave->status == 'Approved')
+                                                                text-success
+                                                            @elseif($leave->status == 'Rejected')
+                                                                text-danger
+                                                            @endif
+                                                            "></i> {{ $leave->status }}
                                                         </a>
                                                     </div>
                                                 </td>
@@ -224,167 +222,7 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>Medical Leave</td>
-                                                <td>27 Feb 2019</td>
-                                                <td>27 Feb 2019</td>
-                                                <td>1 day</td>
-                                                <td>Going to Hospital</td>
-                                                <td class="text-center">
-                                                    <div class="action-label">
-                                                        <a class="btn btn-white btn-sm btn-rounded" href="javascript:void(0);">
-                                                            <i class="fa fa-dot-circle-o text-success"></i> Approved
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <div class="dropdown dropdown-action">
-                                                        <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit_leave"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_approve"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>LOP</td>
-                                                <td>24 Feb 2019</td>
-                                                <td>25 Feb 2019</td>
-                                                <td>2 days</td>
-                                                <td>Personnal</td>
-                                                <td class="text-center">
-                                                    <div class="action-label">
-                                                        <a class="btn btn-white btn-sm btn-rounded" href="javascript:void(0);">
-                                                            <i class="fa fa-dot-circle-o text-success"></i> Approved
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <div class="dropdown dropdown-action">
-                                                        <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit_leave"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_approve"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Paternity Leave</td>
-                                                <td>13 Feb 2019</td>
-                                                <td>17 Feb 2019</td>
-                                                <td>5 days</td>
-                                                <td>Going to Hospital</td>
-                                                <td class="text-center">
-                                                    <div class="action-label">
-                                                        <a class="btn btn-white btn-sm btn-rounded" href="javascript:void(0);">
-                                                            <i class="fa fa-dot-circle-o text-danger"></i> Declined
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <div class="dropdown dropdown-action">
-                                                        <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit_leave"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_approve"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Casual Leave</td>
-                                                <td>30 Jan 2019</td>
-                                                <td>30 Jan 2019</td>
-                                                <td>Second Half</td>
-                                                <td>Going to Hospital</td>
-                                                <td class="text-center">
-                                                    <div class="action-label">
-                                                        <a class="btn btn-white btn-sm btn-rounded" href="javascript:void(0);">
-                                                            <i class="fa fa-dot-circle-o text-purple"></i> New
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <div class="dropdown dropdown-action">
-                                                        <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit_leave"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_approve"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Hospitalisation</td>
-                                                <td>15 Jan 2019</td>
-                                                <td>25 Jan 2019</td>
-                                                <td>10 days</td>
-                                                <td>Going to Hospital</td>
-                                                <td class="text-center">
-                                                    <div class="action-label">
-                                                        <a class="btn btn-white btn-sm btn-rounded" href="javascript:void(0);">
-                                                            <i class="fa fa-dot-circle-o text-success"></i> Approved
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <div class="dropdown dropdown-action">
-                                                        <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit_leave"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_approve"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Casual Leave</td>
-                                                <td>13 Jan 2019</td>
-                                                <td>14 Jan 2019</td>
-                                                <td>2 days</td>
-                                                <td>Going to Hospital</td>
-                                                <td class="text-center">
-                                                    <div class="action-label">
-                                                        <a class="btn btn-white btn-sm btn-rounded" href="javascript:void(0);">
-                                                            <i class="fa fa-dot-circle-o text-success"></i> Approved
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <div class="dropdown dropdown-action">
-                                                        <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit_leave"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_approve"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Casual Leave</td>
-                                                <td>10 Jan 2019</td>
-                                                <td>10 Jan 2019</td>
-                                                <td>First Half</td>
-                                                <td>Going to Hospital</td>
-                                                <td class="text-center">
-                                                    <div class="action-label">
-                                                        <a class="btn btn-white btn-sm btn-rounded" href="javascript:void(0);">
-                                                            <i class="fa fa-dot-circle-o text-danger"></i> Declined
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <div class="dropdown dropdown-action">
-                                                        <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit_leave"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_approve"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>
