@@ -13,20 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', [App\Http\Controllers\DashboardController::class, 'index']);
+    Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
-Route::get('/settings', [App\Http\Controllers\SettingsController::class, 'index'])->name('home');
-Route::get('/advance', [App\Http\Controllers\AdvanceController::class, 'index'])->name('home');
-Route::get('/allowance', [App\Http\Controllers\AllowanceController::class, 'index'])->name('home');
-Route::get('/attendance', [App\Http\Controllers\AttendanceController::class, 'index'])->name('home');
-Route::get('/deduction', [App\Http\Controllers\DeductionController::class, 'index'])->name('home');
-Route::get('/leave', [App\Http\Controllers\LeaveController::class, 'index'])->name('home');
-Route::get('/loan', [App\Http\Controllers\LoanController::class, 'index'])->name('home');
-Route::get('/month-salary', [App\Http\Controllers\SalaryController::class, 'index'])->name('home');
-Route::get('/employee-profile', [App\Http\Controllers\EmployeeProfileController::class, 'index'])->name('home');
+    Route::get('/settings', [App\Http\Controllers\SettingsController::class, 'index']);
+    Route::get('/advance', [App\Http\Controllers\AdvanceController::class, 'index']);
+    Route::get('/allowance', [App\Http\Controllers\AllowanceController::class, 'index']);
+    Route::get('/attendance', [App\Http\Controllers\AttendanceController::class, 'index']);
+    Route::get('/deduction', [App\Http\Controllers\DeductionController::class, 'index']);
+    Route::get('/leave', [App\Http\Controllers\LeaveController::class, 'index']);
+    Route::get('/loan', [App\Http\Controllers\LoanController::class, 'index']);
+    Route::get('/month-salary', [App\Http\Controllers\SalaryController::class, 'index']);
+    Route::get('/employee-profile', [App\Http\Controllers\EmployeeProfileController::class, 'index']);
+});

@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet"> 
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/ckeditor.css') }}" rel="stylesheet">
@@ -30,93 +30,178 @@
 
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<div id="app">
+    {{--        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+                <div class="container">
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        {{ config('app.name', 'Laravel') }}
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        &lt;!&ndash; Left Side Of Navbar &ndash;&gt;
+                        <ul class="navbar-nav me-auto">
 
-                    </ul>
+                        </ul>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
+                        &lt;!&ndash; Right Side Of Navbar &ndash;&gt;
+                        <ul class="navbar-nav ms-auto">
+                            &lt;!&ndash; Authentication Links &ndash;&gt;
+                            @guest
+                                @if (Route::has('login'))
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    </li>
+                                @endif
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                @if (Route::has('register'))
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    </li>
+                                @endif
+                            @else
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::user()->name }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
+                            @endguest
+                        </ul>
+                    </div>
+                </div>
+            </nav>--}}
+
+
+    <div class="header">
+
+        <div class="header-left">
+            <a href="admin-dashboard.html" class="logo">
+                <img src="{{ asset('images/logo.png') }}" width="40" height="40" alt="">
+            </a>
+        </div>
+
+        <a id="toggle_btn" href="javascript:void(0);">
+        <span class="bar-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+        </span>
+        </a>
+
+        <div class="page-title-box">
+            <h3>SLTDA | Sri Lanka Tourism Development Authority</h3>
+        </div>
+
+        <a id="mobile_btn" class="mobile_btn" href="#sidebar"><i class="fa fa-bars"></i></a>
+
+        <ul class="nav user-menu">
+
+            <li class="nav-item">
+                <div class="top-nav-search">
+                    <a href="javascript:void(0);" class="responsive-search">
+                        <i class="fa fa-search"></i>
+                    </a>
+                    <form action="search.html">
+                        <input class="form-control" type="text" placeholder="Search here">
+                        <button class="btn" type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+            </li>
+
+
+            <li class="nav-item dropdown has-arrow main-drop">
+                <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                <span class="user-img"><img src="{{ asset('images/profiles/avatar-21.jpg') }}" alt="">
+                    <span class="status online"></span></span>
+                    <span>Admin</span>
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="profile.html">My Profile</a>
+                    <a class="dropdown-item" href="settings.html">Settings</a>
+
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+
+                </div>
+            </li>
+        </ul>
+
+        <!--            <div class="dropdown mobile-user-menu">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="profile.html">My Profile</a>
+                            <a class="dropdown-item" href="settings.html">Settings</a>
+                            <a class="dropdown-item" href="index.html">Logout</a>
+                        </div>
+                    </div>-->
 
     </div>
 
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>
-    <script src="{{ asset('js/chart.js') }}"></script>
-    <script src="{{ asset('js/Chart.min.js') }}"></script>
-    <script src="{{ asset('js/ckeditor.js') }}"></script>
-    <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('js/dropfiles.js') }}"></script>
-    <script src="{{ asset('js/fullcalendar.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.fullcalendar.js') }}"></script>
-    <script src="{{ asset('js/jquery.maskedinput.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.slimscroll.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.ui.touch-punch.min.js') }}"></script>
-    <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
-    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('js/line-chart.js') }}"></script>
-    <script src="{{ asset('js/mask.js') }}"></script>
-    <script src="{{ asset('js/moment.min.js') }}"></script>
-    <script src="{{ asset('js/multiselect.min.js') }}"></script>
-    <script src="{{ asset('js/select2.min.js') }}"></script>
-    <script src="{{ asset('js/task.js') }}"></script>
+
+    <main class="py-4">
+        <div id="app_salary_cal">
+            <main class="tg-main tg-haslayout">
+                <div class="main-wrapper">
+
+                    @if (Auth::check())
+                        @include('includes.sidebar')
+                    @endif
+
+                    @yield('content')
+                </div>
+            </main>
+        </div>
+    </main>
 
 
 
-    <!-- <script src="{{ asset('js/vue.js') }}"></script>
+</div>
+
+<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>
+<script src="{{ asset('js/chart.js') }}"></script>
+<script src="{{ asset('js/Chart.min.js') }}"></script>
+<script src="{{ asset('js/ckeditor.js') }}"></script>
+<script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('js/dropfiles.js') }}"></script>
+<script src="{{ asset('js/fullcalendar.min.js') }}"></script>
+<script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('js/jquery.fullcalendar.js') }}"></script>
+<script src="{{ asset('js/jquery.maskedinput.min.js') }}"></script>
+<script src="{{ asset('js/jquery.slimscroll.min.js') }}"></script>
+<script src="{{ asset('js/jquery.ui.touch-punch.min.js') }}"></script>
+<script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+<script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('js/line-chart.js') }}"></script>
+<script src="{{ asset('js/mask.js') }}"></script>
+<script src="{{ asset('js/moment.min.js') }}"></script>
+<script src="{{ asset('js/multiselect.min.js') }}"></script>
+<script src="{{ asset('js/select2.min.js') }}"></script>
+<script src="{{ asset('js/task.js') }}"></script>
+
+
+<!-- <script src="{{ asset('js/vue.js') }}"></script>
     <script src="{{ asset('js/vuelidate.min.js') }}"></script>
     <script src="{{ asset('js/validators.min.js') }}"></script>
     <script src="{{ asset('js/jquery-library.js') }}"></script>
