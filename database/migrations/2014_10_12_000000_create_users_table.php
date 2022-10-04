@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('position',30);
             $table->string('etf_epf_number',30)->nullable();
+            $table->string('search_employee_id',30)->nullable();
             $table->string('full_name',50)->nullable();
             $table->string('name_with_initials',30)->nullable();
             $table->date('date_of_birth')->nullable();

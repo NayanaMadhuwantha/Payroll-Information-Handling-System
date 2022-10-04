@@ -32,47 +32,47 @@
                                 <div class="row">
                                     <div class="col-md-5">
                                         <div class="profile-info-left">
-                                            <h3 class="user-name m-t-0 mb-0">H.S Saman Kumara</h3>
-                                            <h6 class="text-muted">Position</h6>
-                                            <div>Search Employee ID : FT-0001</div>
-                                            <div>Employee No : 0001</div>
-                                            <div>EPF/ETF No : 0001</div>
-                                            <div class="small doj text-muted">Date Hired : 1st Jan 2013</div>
+                                            <h3 class="user-name m-t-0 mb-0">{{ $user->full_name ?? $user->username }}</h3>
+                                            <h6 class="text-muted">{{ $user->position }}</h6>
+                                            <div>Search Employee ID : {{ $user->search_employee_id }}</div>
+                                            <div>Employee No : {{ $user->id }}</div>
+                                            <div>EPF/ETF No : {{ $user->etf_epf_number }}</div>
+                                            <div class="small doj text-muted">Date Hired : {{ $user->date_hired }}</div>
                                         </div>
                                     </div>
                                     <div class="col-md-7">
                                         <ul class="personal-info">
                                             <li>
                                                 <div class="title">Full Name:</div>
-                                                <div class="text">Saman Kumara</div>
+                                                <div class="text">{{ $user->full_name ?? "N/A" }}</div>
                                             </li>
                                             <li>
                                                 <div class="title">Date Of Birth:</div>
-                                                <div class="text">24th July</div>
+                                                <div class="text">{{ $user->date_of_birth ?? "N/A"}}</div>
                                             </li>
                                             <li>
                                                 <div class="title">Contact:</div>
-                                                <div class="text">0778562365</div>
+                                                <div class="text">{{ $user->contact ?? "N/A"}}</div>
                                             </li>
                                             <li>
                                                 <div class="title">Email:</div>
-                                                <div class="text"><a href="">kjhska@gmail.com</a></div>
+                                                <div class="text"><a href="">{{ $user->email}}</a></div>
                                             </li>
                                             <li>
                                                 <div class="title">Address:</div>
-                                                <div class="text">1861 Bayonne Ave, Manchester Township, NJ, 08759</div>
+                                                <div class="text">{{ $user->address ?? "N/A"}}</div>
                                             </li>
                                             <li>
                                                 <div class="title">NIC No:</div>
-                                                <div class="text">941578963V</div>
+                                                <div class="text">{{ $user->nic_number ?? "N/A"}}</div>
                                             </li>
                                             <li>
                                                 <div class="title">Gender:</div>
-                                                <div class="text">Male</div>
+                                                <div class="text">{{ $user->gender ?? "N/A"}}</div>
                                             </li>
                                             <li>
                                                 <div class="title">Basic Salary:</div>
-                                                <div class="text">Rs. 15000.00</div>
+                                                <div class="text">{{ $user->basic_salary ?? "N/A"}}</div>
                                             </li>
 
                                         </ul>
@@ -113,51 +113,51 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Search Employee ID</label>
-                                            <input type="text" class="form-control" value="65465">
+                                            <input type="text" class="form-control" value="{{ $user->search_employee_id }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Employee No</label>
-                                            <input type="text" class="form-control" value="45645">
+                                            <input type="text" class="form-control" value="{{ $user->id }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>ETF/EPF No</label>
-                                            <input type="text" class="form-control" value="45645">
+                                            <input type="text" class="form-control" value="{{ $user->etf_epf_number }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Full Name</label>
-                                            <input type="text" class="form-control" value="Saman Kumara">
+                                            <input type="text" class="form-control" value="{{ $user->full_name }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Name with Initials</label>
-                                            <input type="text" class="form-control" value="H.S Saman Kumara">
+                                            <input type="text" class="form-control" value="{{ $user->name_with_initials }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Date of Birth</label>
                                             <div class="cal-icon">
-                                                <input class="form-control datetimepicker" type="text" value="05/06/1985">
+                                                <input class="form-control datetimepicker" type="text" value="{{ $user->date_of_birth }}">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Contact</label>
-                                            <input type="text" class="form-control" value="0778962536">
+                                            <input type="text" class="form-control" value="{{ $user->contact }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Email</label>
-                                            <input type="text" class="form-control" value="kshak@gmail.com">
+                                            <input type="text" class="form-control" value="{{ $user->email }}">
                                         </div>
                                     </div>
 
@@ -168,7 +168,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Address</label>
-                                    <input type="text" class="form-control" value="4487 Snowbird Lane">
+                                    <input type="text" class="form-control" value="{{ $user->address }}">
                                 </div>
                             </div>
 
@@ -177,22 +177,22 @@
                                 <div class="form-group">
                                     <label>Date Hired</label>
                                     <div class="cal-icon">
-                                        <input class="form-control datetimepicker" type="text" value="05/06/1985">
+                                        <input class="form-control datetimepicker" type="text" value="{{ $user->date_hired }}">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Basic Salary</label>
-                                    <input type="text" class="form-control" value="Rs. 15000.00">
+                                    <input type="text" class="form-control" value="{{ $user->basic_salary }}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Gender</label>
                                     <select class="select form-control">
-                                        <option value="male selected">Male</option>
-                                        <option value="female">Female</option>
+                                        <option value="male {{ $user->gender == 'male' ? 'selected' : '' }}">Male</option>
+                                        <option value="female" {{ $user->gender == 'female' ? 'selected' : '' }}>Female</option>
                                     </select>
                                 </div>
                             </div>
@@ -200,10 +200,10 @@
                                 <div class="form-group">
                                     <label>Designation <span class="text-danger">*</span></label>
                                     <select class="select">
-                                        <option>Select Position</option>
-                                        <option>Web Development</option>
-                                        <option>IT Management</option>
-                                        <option>Marketing</option>
+                                        <option disabled selected hidden>Select Position</option>
+                                        <option value="Web Developer" {{ $user->position == 'Web Developer' ? 'selected' : '' }}>Web Developer</option>
+                                        <option value="IT Manager" {{ $user->position == 'IT Manager' ? 'selected' : '' }}>IT Manager</option>
+                                        <option value="Marketing Manager" {{ $user->position == 'Marketing Manager' ? 'selected' : '' }}>Marketing Manager</option>
                                     </select>
                                 </div>
                             </div>
@@ -211,10 +211,10 @@
                                 <div class="form-group">
                                     <label>Grade <span class="text-danger">*</span></label>
                                     <select class="select">
-                                        <option>Select Grade</option>
-                                        <option>Grade 1</option>
-                                        <option>Grade 2</option>
-                                        <option>Grade 3</option>
+                                        <option disabled selected hidden>Select grade</option>
+                                        @foreach($grades as $grade)
+                                            <option value="{{ $grade->id }}" {{  !empty($user->grade) ?? $user->grade->id == $grade->id ? 'selected' : '' }}>{{ $grade->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

@@ -28,7 +28,7 @@
             <div class="container">
 
                 <div class="account-logo">
-                    <a href="admin-dashboard.html"><img src="{{ asset('images/logo2.png') }}" alt="SLTDA | Sri Lanka Tourism Development Authority"></a>
+                    <a href="#"><img src="{{ asset('images/logo2.png') }}" alt="SLTDA | Sri Lanka Tourism Development Authority"></a>
                 </div>
 
                 <div class="account-box">
@@ -87,7 +87,7 @@
                                 <button class="btn btn-primary account-btn" type="submit">Login</button>
                             </div>
                             <div class="account-footer">
-                                <p>Don't have an account yet? <a href="register.html">Register</a></p>
+                                <p>Don't have an account yet? <a href="{{ route('register') }}">Register</a></p>
                             </div>
                         </form>
 
