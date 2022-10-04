@@ -27,5 +27,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/leave', [App\Http\Controllers\LeaveController::class, 'index'])->name('leave');
     Route::get('/loan', [App\Http\Controllers\LoanController::class, 'index'])->name('loan');
     Route::get('/month-salary', [App\Http\Controllers\SalaryController::class, 'index'])->name('month-salary');
-    Route::get('/employee-profile', [App\Http\Controllers\EmployeeProfileController::class, 'index'])->name('employee-profile');
+
+    Route::get('/employee-profile', [App\Http\Controllers\EmployeeProfileController::class, 'index'])->name('employee-profile.index');
+    Route::post('/employee-profile/{employee_id}', [App\Http\Controllers\EmployeeProfileController::class, 'update'])->name('employee-profile.update');
 });

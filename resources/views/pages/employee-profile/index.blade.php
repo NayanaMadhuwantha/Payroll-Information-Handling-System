@@ -99,7 +99,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="{{ route('employee-profile.update',Auth::user()->id) }}" method="post">
+                        @csrf
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="profile-img-wrap edit-img">
@@ -113,51 +114,51 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Search Employee ID</label>
-                                            <input type="text" class="form-control" value="{{ $user->search_employee_id }}">
+                                            <input name="search_employee_id" type="text" class="form-control" value="{{ $user->search_employee_id }}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Employee No</label>
-                                            <input type="text" class="form-control" value="{{ $user->id }}">
+                                            <input name="id" type="text" class="form-control" value="{{ $user->id }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>ETF/EPF No</label>
-                                            <input type="text" class="form-control" value="{{ $user->etf_epf_number }}">
+                                            <input name="etf_epf_number" type="text" class="form-control" value="{{ $user->etf_epf_number }}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Full Name</label>
-                                            <input type="text" class="form-control" value="{{ $user->full_name }}">
+                                            <input name="full_name" type="text" class="form-control" value="{{ $user->full_name }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Name with Initials</label>
-                                            <input type="text" class="form-control" value="{{ $user->name_with_initials }}">
+                                            <input name="name_with_initials" type="text" class="form-control" value="{{ $user->name_with_initials }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Date of Birth</label>
                                             <div class="cal-icon">
-                                                <input class="form-control datetimepicker" type="text" value="{{ $user->date_of_birth }}">
+                                                <input name="date_of_birth" class="form-control datetimepicker" type="date" value="{{ $user->date_of_birth }}">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Contact</label>
-                                            <input type="text" class="form-control" value="{{ $user->contact }}">
+                                            <input name="contact" type="number" class="form-control" value="{{ $user->contact }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Email</label>
-                                            <input type="text" class="form-control" value="{{ $user->email }}">
+                                            <input name="email" type="email" class="form-control" value="{{ $user->email }}">
                                         </div>
                                     </div>
 
@@ -168,7 +169,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Address</label>
-                                    <input type="text" class="form-control" value="{{ $user->address }}">
+                                    <input name="address" type="text" class="form-control" value="{{ $user->address }}">
                                 </div>
                             </div>
 
@@ -177,21 +178,21 @@
                                 <div class="form-group">
                                     <label>Date Hired</label>
                                     <div class="cal-icon">
-                                        <input class="form-control datetimepicker" type="text" value="{{ $user->date_hired }}">
+                                        <input name="date_hired" class="form-control datetimepicker" type="date" value="{{ $user->date_hired }}">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Basic Salary</label>
-                                    <input type="text" class="form-control" value="{{ $user->basic_salary }}">
+                                    <input name="basic_salary" type="number" class="form-control" value="{{ $user->basic_salary }}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Gender</label>
-                                    <select class="select form-control">
-                                        <option value="male {{ $user->gender == 'male' ? 'selected' : '' }}">Male</option>
+                                    <select name="gender"  class="select form-control" required>
+                                        <option value="male" {{ $user->gender == 'male' ? 'selected' : '' }}>Male</option>
                                         <option value="female" {{ $user->gender == 'female' ? 'selected' : '' }}>Female</option>
                                     </select>
                                 </div>
@@ -199,8 +200,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Designation <span class="text-danger">*</span></label>
-                                    <select class="select">
-                                        <option disabled selected hidden>Select Position</option>
+                                    <select name="position" class="select" required>
                                         <option value="Web Developer" {{ $user->position == 'Web Developer' ? 'selected' : '' }}>Web Developer</option>
                                         <option value="IT Manager" {{ $user->position == 'IT Manager' ? 'selected' : '' }}>IT Manager</option>
                                         <option value="Marketing Manager" {{ $user->position == 'Marketing Manager' ? 'selected' : '' }}>Marketing Manager</option>
@@ -210,10 +210,9 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Grade <span class="text-danger">*</span></label>
-                                    <select class="select">
-                                        <option disabled selected hidden>Select grade</option>
+                                    <select name="grade" class="select" required>
                                         @foreach($grades as $grade)
-                                            <option value="{{ $grade->id }}" {{  !empty($user->grade) ?? $user->grade->id == $grade->id ? 'selected' : '' }}>{{ $grade->name }}</option>
+                                            <option value="{{ $grade->id }}" {{  !empty($user->grade) ?? ($user->grade->id == $grade->id ? 'selected' : '') }}>{{ $grade->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

@@ -32,6 +32,7 @@ class CreateUsersTable extends Migration
             $table->date('date_hired')->nullable();
             $table->unsignedBigInteger('grade_id')->nullable();
             $table->float('basic_salary')->nullable();
+            $table->string('profile_photo_path')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
