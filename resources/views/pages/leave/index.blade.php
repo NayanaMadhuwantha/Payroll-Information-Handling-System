@@ -256,17 +256,17 @@
                 <div class="modal-header">
                     <h5 class="modal-title">Edit Leave</h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
                             <label>Leave Type <span class="text-danger">*</span></label>
                             <select class="select">
-<option>Select Leave Type</option>
-<option>Casual Leave 12 Days</option>
-</select>
+                            <option>Select Leave Type</option>
+                            <option>Casual Leave 12 Days</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>From <span class="text-danger">*</span></label>
