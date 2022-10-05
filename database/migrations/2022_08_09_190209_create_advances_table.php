@@ -18,6 +18,7 @@ class CreateAdvancesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->date('date');
             $table->float('amount');
+            $table->string('status')->default('Pending');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

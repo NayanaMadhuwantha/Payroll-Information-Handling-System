@@ -36,8 +36,10 @@ class DeductionController extends Controller
         }
 
         $users = User::all();
+        $deductions = Deduction::get();
         return view('pages.deduction.index')->with([
-            'users' => $users
+            'users' => $users,
+            'deductions' => $deductions
         ]);
     }
 
@@ -58,8 +60,10 @@ class DeductionController extends Controller
         }
 
         $users = User::all();
+        $deductions = Deduction::get();
         return view('pages.deduction.index')->with([
-            'users' => $users
+            'users' => $users,
+            'deductions' => $deductions
         ]);
     }
 
@@ -80,8 +84,10 @@ class DeductionController extends Controller
         }
 
         $users = User::all();
+        $deductions = Deduction::get();
         return view('pages.deduction.index')->with([
-            'users' => $users
+            'users' => $users,
+            'deductions' => $deductions
         ]);
     }
 }

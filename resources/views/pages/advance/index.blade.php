@@ -46,11 +46,16 @@
 
 
 
-                    <form>
+                    <form action="{{ route('advance.store') }}" method="post">
+                        @csrf
                         <div class="form-group row">
-                            <label class="col-form-label col-md-2">Employee ID</label>
+                            <label class="col-form-label col-md-2">Employee</label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control">
+                                <select name="user" id="user" class="select" required>
+                                    @foreach($users as $user)
+                                        <option value="{{ $user->id }}" data-grade="{{ $user->grade->name }}">{{ $user->username }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <label class="col-form-label col-md-2">Grade</label>
                             <div class="col-md-4">
@@ -64,19 +69,32 @@
                             </div>
                             <label class="col-form-label col-md-2">Month</label>
                             <div class="col-md-4">
-                                <select class="select">
-                                    <option>Select Month</option>
-                                    <option>January</option>
-                                    <option>February</option>
-                                    <option>March</option>
-                                    </select>
+                                <select name="month" class="select" required>
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-form-label col-md-2">Required Amount (Rs.)</label>
                             <div class="col-md-10">
-                                <input type="text" class="form-control">
+                                <input type="number" class="form-control" name="amount" required>
+                            </div>
+
+                            <label class="col-form-label col-md-2">Date</label>
+                            <div class="col-md-4">
+                                <input type="date" class="form-control" name="date" required>
                             </div>
                         </div>
 
@@ -117,51 +135,35 @@
                                         <thead>
                                             <tr>
                                                 <th>Employee No</th>
-                                                <th>Month</th>
+                                                <th>Date</th>
                                                 <th>Advance Amount (Rs.)</th>
                                                 <th class="text-center">Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        @foreach($advance as $item)
                                             <tr>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>8000.00</td>
+                                                <td>{{ $item->user_id }}</td>
+                                                <td>{{ $item->date }}</td>
+                                                <td>{{ $item->amount }}</td>
                                                 <td class="text-center">
                                                     <div class="action-label">
                                                         <a class="btn btn-white btn-sm btn-rounded" href="javascript:void(0);">
-                                                            <i class="fa fa-dot-circle-o text-purple"></i> New
+                                                            <i class="fa fa-dot-circle-o
+                                                            @if($item->status == 'Pending')
+                                                                text-purple
+                                                            @elseif($item->status == 'Approved')
+                                                                text-success
+                                                            @elseif($item->status == 'Rejected')
+                                                                text-danger
+                                                            @endif
+                                                                "></i> {{ $item->status }}
                                                         </a>
                                                     </div>
                                                 </td>
 
                                             </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>2</td>
-                                                <td>8000.00</td>
-                                                <td class="text-center">
-                                                    <div class="action-label">
-                                                        <a class="btn btn-white btn-sm btn-rounded" href="javascript:void(0);">
-                                                            <i class="fa fa-dot-circle-o text-success"></i> Approved
-                                                        </a>
-                                                    </div>
-                                                </td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>2</td>
-                                                <td>8000.00</td>
-                                                <td class="text-center">
-                                                    <div class="action-label">
-                                                        <a class="btn btn-white btn-sm btn-rounded" href="javascript:void(0);">
-                                                            <i class="fa fa-dot-circle-o text-danger"></i> Declined
-                                                        </a>
-                                                    </div>
-                                                </td>
-
-                                            </tr>
+                                        @endforeach
 
                                     </table>
                                 </div>
