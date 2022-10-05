@@ -28,7 +28,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/other-allowance', [App\Http\Controllers\AllowanceController::class, 'saveOtherAllowance'])->name('other-allowance.store');
 
     Route::get('/attendance', [App\Http\Controllers\AttendanceController::class, 'index'])->name('attendance');
+
     Route::get('/deduction', [App\Http\Controllers\DeductionController::class, 'index'])->name('deduction');
+    Route::post('/deduction', [App\Http\Controllers\DeductionController::class, 'saveDeduction'])->name('deduction.store');
+    Route::post('/absent', [App\Http\Controllers\DeductionController::class, 'saveAbsence'])->name('absent.store');
+    Route::post('/food-deduction', [App\Http\Controllers\DeductionController::class, 'saveFoodDeduction'])->name('food-deduction.store');
 
     Route::get('/leave', [App\Http\Controllers\LeaveController::class, 'index'])->name('leave');
     Route::post('/leave', [App\Http\Controllers\LeaveController::class, 'store'])->name('leave.store');

@@ -54,34 +54,56 @@
 
 
 
-                    <form>
+                    <form action="{{ route('deduction.store') }}" method="post">
+                        @csrf
                         <div class="form-group row mb-30 offset-md-3">
-                            <label class="col-form-label col-md-2">Search Employee ID</label>
+                            <label class="col-form-label col-md-2">Employee</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control">
+                                <select name="user" id="user" class="select" required>
+                                    @foreach($users as $user)
+                                        <option value="{{ $user->id }}" data-grade="{{ $user->grade->name }}">{{ $user->username }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-form-label col-md-1">Month</label>
-                            <div class="col-md-2">
-                                <select class="select">
-                                    <option>Select Month</option>
-                                    <option>January</option>
-                                    <option>February</option>
-                                    <option>March</option>
-                                    </select>
+                            <div class="col-md-3">
+                                <select name="month" class="select" required>
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
                             </div>
-                            <label class="col-form-label col-md-1">Employee ID</label>
-                            <div class="col-md-2">
-                                <input type="text" class="form-control">
+                            <label class="col-form-label col-md-1">Date</label>
+                            <div class="col-md-3">
+                                <input type="date" class="form-control" name="date" required>
                             </div>
+
+                            <label class="col-form-label col-md-1">Reason</label>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" name="reason">
+                            </div>
+
+                        </div>
+
+                        <div class="form-group row">
                             <label class="col-form-label col-md-1">No of Days</label>
-                            <div class="col-md-2">
-                                <input type="text" class="form-control">
+                            <div class="col-md-3">
+                                <input type="number" class="form-control" name="number_of_dates" required>
                             </div>
                             <label class="col-form-label col-md-1">Per Amount (Rs.)</label>
-                            <div class="col-md-2">
-                                <input type="text" class="form-control">
+                            <div class="col-md-3">
+                                <input type="number" step="0.1" class="form-control" name="per_amount" required>
                             </div>
                         </div>
 
@@ -240,7 +262,8 @@
 
 
 
-                    <form>
+                    <form action="{{ route('absent.store') }}" method="post">
+                        @csrf
                         <!-- <div class="form-group row">
                             <label class="col-form-label col-md-2">Search Employee ID</label>
                             <div class="col-md-10">
@@ -250,51 +273,59 @@
                         <div class="form-group row">
                             <label class="col-form-label col-md-2">Month</label>
                             <div class="col-md-4">
-                                <select class="select">
-                                    <option>Select Month</option>
-                                    <option>January</option>
-                                    <option>February</option>
-                                    <option>March</option>
-                                    </select>
+                                <select name="month" class="select" required>
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
                             </div>
                             <label class="col-form-label col-md-2">Rate</label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" name="rate" required>
                             </div>
 
                         </div>
                         <div class="form-group row">
-                            <label class="col-form-label col-md-2">Employee No</label>
+                            <label class="col-form-label col-md-2">Employee</label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control">
-                            </div>
-                            <label class="col-form-label col-md-2">Grade</label>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-form-label col-md-2">No. of Attend Days</label>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control">
+                                <select name="user" id="user" class="select" required>
+                                    @foreach($users as $user)
+                                        <option value="{{ $user->id }}" data-grade="{{ $user->grade->name }}">{{ $user->username }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <label class="col-form-label col-md-2">No. of Absent Days</label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-form-label col-md-2">No. of Leaves</label>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control">
-                            </div>
-                            <label class="col-form-label col-md-2">Nopay (Rs.)</label>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control">
+                                <input type="number" class="form-control" name="number_of_absents" required>
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label class="col-form-label col-md-2">No. of Leaves</label>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" name="number_of_leaves" required>
+                            </div>
+                            <label class="col-form-label col-md-2">Nopay (Rs.)</label>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" name="full_amount" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-md-2">Date</label>
+                            <div class="col-md-4">
+                                <input type="date" class="form-control" name="date" required>
+                            </div>
+                        </div>
 
                         <div class="submit-section mt-2 mb-4">
                             <button class="btn btn-warning submit-btn">Calculate</button>
@@ -323,26 +354,33 @@
                         </div>
                     </div>
 
-                    <form>
-                        <div class="form-group row mb-30 offset-md-3">
-                            <label class="col-form-label col-md-2">Search Employee ID</label>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
+                    <form action="{{ route('food-deduction.store'  ) }}" method="post">
+                        @csrf
                         <div class="form-group row">
                             <label class="col-form-label col-md-2">Month</label>
                             <div class="col-md-4">
-                                <select class="select">
-                                    <option>Select Month</option>
-                                    <option>January</option>
-                                    <option>February</option>
-                                    <option>March</option>
-                                    </select>
+                                <select name="month" class="select" required>
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
                             </div>
-                            <label class="col-form-label col-md-2">Employee No</label>
+                            <label class="col-form-label col-md-2">Employee</label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control">
+                                <select name="user" id="user" class="select" required>
+                                    @foreach($users as $user)
+                                        <option value="{{ $user->id }}" data-grade="{{ $user->grade->name }}">{{ $user->username }}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                         </div>
@@ -350,14 +388,25 @@
 
                             <label class="col-form-label col-md-2">Per Amount (Rs.)</label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control">
+                                <input type="number" class="form-control" name="per_amount" required>
                             </div>
                             <label class="col-form-label col-md-2">No. of Days</label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control">
+                                <input type="number" class="form-control" name="number_of_dates" required>
                             </div>
                         </div>
 
+                        <div class="form-group row">
+
+                            <label class="col-form-label col-md-2">Reason</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="reason" >
+                            </div>
+                            <label class="col-form-label col-md-2">Date</label>
+                            <div class="col-md-4">
+                                <input type="date" class="form-control" name="date" required>
+                            </div>
+                        </div>
 
                         <div class="submit-section mt-2 mb-4">
                             <button class="btn btn-success submit-btn">Add</button>
@@ -443,24 +492,14 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        @foreach($deductions as $deduction)
                                             <tr>
-                                                <td>1</td>
-                                                <td>2123243</td>
-                                                <td>3</td>
-                                                <td>Deduction II</td>
+                                                <td>{{ $deduction->id }}</td>
+                                                <td>{{ $deduction->user_id }}</td>
+                                                <td>{{ $deduction->month }}</td>
+                                                <td>{{ $deduction->type->name}}</td>
                                             </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>2123243</td>
-                                                <td>3</td>
-                                                <td>Deduction II</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>2123243</td>
-                                                <td>3</td>
-                                                <td>Deduction II</td>
-                                            </tr>
+                                        @endforeach
                                     </table>
                                 </div>
                             </div>
