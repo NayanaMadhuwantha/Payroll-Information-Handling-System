@@ -22,7 +22,8 @@ class User extends Authenticatable
         'email',
         'password',
         'position',
-        'gender'
+        'gender',
+        'grade_id'
     ];
 
     /**
@@ -46,5 +47,9 @@ class User extends Authenticatable
 
     public function grade(){
         return $this->belongsTo(Grade::class);
+    }
+
+    public function allowances(){
+        return $this->hasMany(Allowance::class);
     }
 }

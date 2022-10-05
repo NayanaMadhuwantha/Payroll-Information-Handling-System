@@ -21,7 +21,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/settings', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings');
     Route::get('/advance', [App\Http\Controllers\AdvanceController::class, 'index'])->name('advance');
+
     Route::get('/allowance', [App\Http\Controllers\AllowanceController::class, 'index'])->name('allowance');
+    Route::post('/over-time', [App\Http\Controllers\OverTimeController::class, 'store'])->name('over-time.store');
+    Route::post('/attendance-allowance', [App\Http\Controllers\AllowanceController::class, 'saveAttendanceAllowance'])->name('attendance-allowance.store');
+    Route::post('/other-allowance', [App\Http\Controllers\AllowanceController::class, 'saveOtherAllowance'])->name('other-allowance.store');
+
     Route::get('/attendance', [App\Http\Controllers\AttendanceController::class, 'index'])->name('attendance');
     Route::get('/deduction', [App\Http\Controllers\DeductionController::class, 'index'])->name('deduction');
 

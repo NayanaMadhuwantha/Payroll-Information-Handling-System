@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Grade;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -68,8 +69,15 @@ class RegisterController extends Controller
             'username' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'position' => 'test',
-            'gender' => 'male'
+            'position' => 'IT Manager',
+            'gender' => $data['gender'],
+            'grade_id' => $data['grade_id'],
         ]);
+    }
+
+    public function showRegistrationForm()
+    {
+        $grades = Grade::all();
+        return view("auth.register")->with(['grades'=>$grades]);
     }
 }

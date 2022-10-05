@@ -18,7 +18,7 @@ class CreateAllowanceTypesTable extends Migration
             $table->unsignedBigInteger('grade_id');
             $table->string('name',50);
             $table->text('description')->nullable();
-            $table->float('allowance');
+            $table->float('allowance')->nullable();
             $table->timestamps();
 
             $table->foreign('grade_id')->references('id')->on('grades');
