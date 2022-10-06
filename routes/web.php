@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/other-allowance', [App\Http\Controllers\AllowanceController::class, 'saveOtherAllowance'])->name('other-allowance.store');
 
     Route::get('/attendance', [App\Http\Controllers\AttendanceController::class, 'index'])->name('attendance');
+    Route::post('/attendance', [App\Http\Controllers\AttendanceController::class, 'store'])->name('attendance.store');
 
     Route::get('/deduction', [App\Http\Controllers\DeductionController::class, 'index'])->name('deduction');
     Route::post('/deduction', [App\Http\Controllers\DeductionController::class, 'saveDeduction'])->name('deduction.store');

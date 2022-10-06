@@ -41,29 +41,42 @@
                             </div>
                         </div>
                     </div> -->
-
-                    <form>
-                        <div class="form-group row">
-                            <label class="col-form-label col-md-2">Employee ID</label>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control">
+                        <div class="align-center">
+                            <div class="time" >
+                                <div class="time-wrapper">
+                                    <span class="hms"></span>
+                                    <span class="ampm"></span>
+                                    <br>
+                                    <span class="date"></span>
+                                </div>
                             </div>
-                            <label class="col-form-label col-md-6 align-center">Time 1:11:15  Date 2022/07/06
-                            </label>
+                        </div>
+
+                    <form action="{{ route('attendance.store') }}" method="post">
+                        @csrf
+                        <div class="form-group row">
+                            <label class="col-form-label col-md-2">Employee</label>
+                            <div class="col-md-4">
+                                <select name="user" id="user" class="select" required>
+                                    @foreach($users as $user)
+                                        <option value="{{ $user->id }}" data-rate="{{ $user->grade->ot_rate }}">{{ $user->username }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-form-label col-md-2">IN</label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control">
+                                <input type="time" class="form-control" name="time_in" required>
                             </div>
                             <label class="col-form-label col-md-2">OUT</label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control">
+                                <input type="time" class="form-control" name="time_out" required>
                             </div>
                         </div>
 
 
-
+<!--
                         <div class="row mt-4">
                             <div class="col-lg-12">
                                 <div class="table-responsive">
@@ -102,7 +115,7 @@
                                     </table>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
 
 
                         <div class="submit-section">
@@ -141,30 +154,17 @@
                                                 <th>Date </th>
                                                 <th>Punch In</th>
                                                 <th>Punch Out</th>
-                                                <th>Production</th>
-                                                <th>Break</th>
-                                                <th>Overtime</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        @foreach($attendance as $item)
                                             <tr>
-                                                <td>1</td>
-                                                <td>19 Feb 2019</td>
-                                                <td>10 AM</td>
-                                                <td>7 PM</td>
-                                                <td>9 hrs</td>
-                                                <td>1 hrs</td>
-                                                <td>0</td>
+                                                <td>{{ $item->id }}</td>
+                                                <td>{{ $item->date }}</td>
+                                                <td>{{ $item->time_in }}</td>
+                                                <td>{{ $item->time_out }}</td>
                                             </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>20 Feb 2019</td>
-                                                <td>10 AM</td>
-                                                <td>7 PM</td>
-                                                <td>9 hrs</td>
-                                                <td>1 hrs</td>
-                                                <td>0</td>
-                                            </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -193,10 +193,67 @@
 
 </div>
 
-</div>
+<script type="module">
+    function updateTime() {
+        var dateInfo = new Date();
 
+        /* time */
+        var hr,
+            _min = (dateInfo.getMinutes() < 10) ? "0" + dateInfo.getMinutes() : dateInfo.getMinutes(),
+            sec = (dateInfo.getSeconds() < 10) ? "0" + dateInfo.getSeconds() : dateInfo.getSeconds(),
+            ampm = (dateInfo.getHours() >= 12) ? "PM" : "AM";
 
+        // replace 0 with 12 at midnight, subtract 12 from hour if 13–23
+        if (dateInfo.getHours() == 0) {
+            hr = 12;
+        } else if (dateInfo.getHours() > 12) {
+            hr = dateInfo.getHours() - 12;
+        } else {
+            hr = dateInfo.getHours();
+        }
 
-    </main>
-</div>
+        var currentTime = hr + ":" + _min + ":" + sec;
+
+        // print time
+        document.getElementsByClassName("hms")[0].innerHTML = currentTime;
+        document.getElementsByClassName("ampm")[0].innerHTML = ampm;
+
+        /* date */
+        var dow = [
+                "Sunday",
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday"
+            ],
+            month = [
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December"
+            ],
+            day = dateInfo.getDate();
+
+        // store date
+        var currentDate = dow[dateInfo.getDay()] + ", " + month[dateInfo.getMonth()] + " " + day;
+
+        document.getElementsByClassName("date")[0].innerHTML = currentDate;
+    };
+
+    // print time and date once, then update them every second
+    updateTime();
+    setInterval(function() {
+        updateTime()
+    }, 1000);
+</script>
 @endsection
