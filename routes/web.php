@@ -20,6 +20,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/settings', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings');
+    Route::post('/settings', [App\Http\Controllers\SettingsController::class, 'updatePassword'])->name('update.password');
+    Route::post('/add-user', [App\Http\Controllers\SettingsController::class, 'addUser'])->name('add.user');
 
     Route::get('/advance', [App\Http\Controllers\AdvanceController::class, 'index'])->name('advance');
     Route::post('/advance', [App\Http\Controllers\AdvanceController::class, 'store'])->name('advance.store');

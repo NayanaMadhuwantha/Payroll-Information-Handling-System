@@ -57,23 +57,31 @@
                                 </div>
                             </div> -->
 
-                            <form>
+                            <form action="{{ route('update.password') }}" method="post">
+                                @csrf
                                 <div class="form-group">
                                     <label>Enter User Name</label>
-                                    <input type="password" class="form-control">
+                                    <input type="text" class="form-control" name="username" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Enter Old password</label>
-                                    <input type="password" class="form-control">
+                                    <input type="password" class="form-control" name="password" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Enter New password</label>
-                                    <input type="password" class="form-control">
+                                    <input type="password" class="form-control" name="new_password" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Re-Enter New password</label>
-                                    <input type="password" class="form-control">
+                                    <input type="password" class="form-control" name="new_re_password" required>
                                 </div>
+
+                                <div>
+                                    @isset($message)
+                                        <label>{{ $message }}</label>
+                                    @endisset
+                                </div>
+
                                 <div class="submit-section">
                                     <button class="btn btn-primary submit-btn">Update Password</button>
                                 </div>
@@ -91,25 +99,117 @@
 
                         <div class="col-md-6 offset-md-3 mt-lg-5">
 
-                            <form>
+                            <form action="{{ route('add.user') }}" method="post">
+                                @csrf
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">User Name</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="username" required>
                                     </div>
                                 </div>
+
                                 <div class="form-group row">
-                                    <label class="col-form-label col-md-2">Position</label>
+                                    <label class="col-form-label col-md-2">Full Name</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="full_name" required>
                                     </div>
                                 </div>
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-2">Name With Initials</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="name_with_initials">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-2">Email</label>
+                                    <div class="col-md-10">
+                                        <input type="email" class="form-control" name="email" required>
+                                    </div>
+                                </div>
+
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Password</label>
                                     <div class="col-md-10">
-                                        <input type="password" class="form-control">
+                                        <input type="password" class="form-control" name="password" required>
                                     </div>
                                 </div>
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-2">Position</label>
+                                    <div class="col-md-10">
+                                        <select name="position" required>
+                                            <option value="Web Developer">Web Developer</option>
+                                            <option value="IT Manager">IT Manager</option>
+                                            <option value="Marketing Manager">Marketing Manager</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-2">ETF EPF Number</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="etf_epf_number" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-2">Date of birth</label>
+                                    <div class="col-md-10">
+                                        <input type="date" class="form-control" name="date_of_birth" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-2">Contact</label>
+                                    <div class="col-md-10">
+                                        <input type="number" class="form-control" name="contact">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-2">Address</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="address">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-2">NIC number</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="nic_number" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-2">Gender</label>
+                                    <div class="col-md-10">
+                                        <select name="gender" required>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-2">Date hired</label>
+                                    <div class="col-md-10">
+                                        <input type="date" class="form-control" name="date_hired">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-2">Grade</label>
+                                    <div class="col-md-10">
+                                        <select name="grade_id">
+                                            @foreach($grades as $grade)
+                                                <option value="{{ $grade->id }}">{{ $grade->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <div class="submit-section">
                                     <button class="btn btn-primary submit-btn">Create User</button>
                                 </div>
