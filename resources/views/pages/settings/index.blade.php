@@ -225,41 +225,87 @@
                     <div class="tab-pane" id="rates" role="tabpanel" aria-labelledby="rates-tab">
                         <div class="col-md-6 offset-md-3 mt-lg-5">
 
-                            <form>
+                            <form action="{{ route('update.grades') }}" method="post">
+                                @csrf
                                 <div class="form-group row">
-                                    <label class="col-form-label col-md-3">Search Grade</label>
+                                    <label class="col-form-label col-md-3">Grade</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control">
+                                        <select name="grade_id" id="grade" required>
+                                            @foreach($grades as $grade)
+                                                <option value="{{ $grade->id }}"
+                                                    data-per-day-salary-rate="{{ $grade->per_day_salary_rate }}"
+                                                    data-epf-8-rate="{{ $grade->epf_8_rate }}"
+                                                    data-epf-12-rate="{{ $grade->epf_12_rate }}"
+                                                    data-etf-3-rate="{{ $grade->etf_3_rate }}"
+                                                    data-ot-rate="{{ $grade->ot_rate }}"
+                                                    data-attendance-allowance="{{ $grade->attendance_allowance }}"
+                                                    data-basic-salary="{{ $grade->basic_salary }}"
+                                                    data-maximum-advance="{{ $grade->maximum_advance }}"
+                                                    data-maximum-loan="{{ $grade->maximum_loan }}"
+                                                    data-salary-rate="{{ $grade->salary_rate }}"
+                                                >{{ $grade->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-3">Salary Rate (Per Day)</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control">
+                                        <input type="number" id="per_day_salary_rate" value="{{ $grades->first()->per_day_salary_rate }}" class="form-control" name="per_day_salary_rate" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-3">EPF 8% Rate</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control">
+                                        <input type="number" id="epf_8_rate" value="{{ $grades->first()->epf_8_rate }}" class="form-control" name="epf_8_rate" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-3">EPF 12% Rate</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control">
+                                        <input type="number" id="epf_12_rate" value="{{ $grades->first()->epf_12_rate }}" class="form-control" name="epf_12_rate" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-3">ETF 3% Rate</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control">
+                                        <input type="number" id="etf_3_rate" value="{{ $grades->first()->etf_3_rate }}" class="form-control" name="etf_3_rate" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-3">OT Rate</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control">
+                                        <input type="number" id="ot_rate" value="{{ $grades->first()->ot_rate }}" class="form-control" name="ot_rate" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-3">Attendance allowance</label>
+                                    <div class="col-md-9">
+                                        <input type="number" id="attendance_allowance" value="{{ $grades->first()->attendance_allowance }}" class="form-control" name="attendance_allowance">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-3">Basic salary</label>
+                                    <div class="col-md-9">
+                                        <input type="number" id="basic_salary" value="{{ $grades->first()->basic_salary }}" class="form-control" name="basic_salary">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-3">Maximum advance</label>
+                                    <div class="col-md-9">
+                                        <input type="number" id="maximum_advance" value="{{ $grades->first()->maximum_advance }}" class="form-control" name="maximum_advance">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-3">Maximum loan</label>
+                                    <div class="col-md-9">
+                                        <input type="number" id="maximum_loan" value="{{ $grades->first()->maximum_loan }}" class="form-control" name="maximum_loan">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-3">Salary rate</label>
+                                    <div class="col-md-9">
+                                        <input type="number" id="salary_rate" value="{{ $grades->first()->salary_rate }}" class="form-control" name="salary_rate">
                                     </div>
                                 </div>
 
@@ -276,4 +322,38 @@
         </div>
     </div>
 </div>
+
+<script type="module">
+
+    var changeInputValues = function(evt) {
+        var grade_element = document.getElementById('grade');
+        var option= grade_element.options[grade_element.selectedIndex];
+
+        var data_per_day_salary_rate     = option.getAttribute('data-per-day-salary-rate');
+        var data_epf_8_rate              = option.getAttribute('data-epf-8-rate');
+        var data_epf_12_rate             = option.getAttribute('data-epf-12-rate');
+        var data_etf_3_rate              = option.getAttribute('data-etf-3-rate');
+        var data_ot_rate                 = option.getAttribute('data-ot-rate');
+        var data_attendance_allowance    = option.getAttribute('data-attendance-allowance');
+        var data_basic_salary            = option.getAttribute('data-basic-salary');
+        var data_maximum_advance         = option.getAttribute('data-maximum-advance');
+        var data_maximum_loan            = option.getAttribute('data-maximum-loan');
+        var data_salary_rate             = option.getAttribute('data-salary-rate');
+
+        document.getElementById('per_day_salary_rate').value = data_per_day_salary_rate;
+        document.getElementById('epf_8_rate').value = data_epf_8_rate;
+        document.getElementById('epf_12_rate').value = data_epf_12_rate;
+        document.getElementById('etf_3_rate').value = data_etf_3_rate;
+        document.getElementById('ot_rate').value = data_ot_rate;
+        document.getElementById('attendance_allowance').value = data_attendance_allowance;
+        document.getElementById('basic_salary').value = data_basic_salary;
+        document.getElementById('maximum_advance').value = data_maximum_advance;
+        document.getElementById('maximum_loan').value = data_maximum_loan;
+        document.getElementById('salary_rate').value = data_salary_rate;
+    };
+
+    var grade_element = document.getElementById('grade');
+    grade_element.addEventListener('input', changeInputValues, false);
+
+</script>
 @endsection

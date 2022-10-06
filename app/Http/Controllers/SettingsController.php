@@ -76,4 +76,27 @@ class SettingsController extends Controller
             'grades' => $grades
         ]);
     }
+
+    public function updateGrades(Request $request){
+        $grade = Grade::where('id',$request->input('grade_id'))->first();
+
+        if ($grade) {
+            $grade->per_day_salary_rate = $request->input('per_day_salary_rate');
+            $grade->epf_8_rate = $request->input('epf_8_rate');
+            $grade->epf_12_rate = $request->input('epf_12_rate');
+            $grade->etf_3_rate = $request->input('etf_3_rate');
+            $grade->ot_rate = $request->input('ot_rate');
+            $grade->attendance_allowance = $request->input('attendance_allowance');
+            $grade->basic_salary = $request->input('basic_salary');
+            $grade->maximum_advance = $request->input('maximum_advance');
+            $grade->maximum_loan = $request->input('maximum_loan');
+            $grade->salary_rate = $request->input('salary_rate');
+            $grade->save();
+        }
+
+        $grades = Grade::all();
+        return view('pages.settings.index')->with([
+            'grades' => $grades
+        ]);
+    }
 }

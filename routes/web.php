@@ -22,6 +22,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/settings', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings');
     Route::post('/settings', [App\Http\Controllers\SettingsController::class, 'updatePassword'])->name('update.password');
     Route::post('/add-user', [App\Http\Controllers\SettingsController::class, 'addUser'])->name('add.user');
+    Route::post('/update-grades', [App\Http\Controllers\SettingsController::class, 'updateGrades'])->name('update.grades');
 
     Route::get('/advance', [App\Http\Controllers\AdvanceController::class, 'index'])->name('advance');
     Route::post('/advance', [App\Http\Controllers\AdvanceController::class, 'store'])->name('advance.store');
