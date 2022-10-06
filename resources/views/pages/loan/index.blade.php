@@ -21,7 +21,7 @@
 
                 <ul class="nav nav-tabs nav-tabs-bottom align-center" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#aproveloan" role="tab" aria-controls="home" aria-selected="true">Aprove Loan</a>
+                        <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#aproveloan" role="tab" aria-controls="home" aria-selected="true">Approve Loan</a>
                     </li>
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#loanreport" role="tab" aria-controls="profile" aria-selected="false">Report</a>
@@ -38,57 +38,52 @@
                             <div class="page-header">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <h3 class="page-title">Loan Aprove Form</h3>
+                                        <h3 class="page-title">Loan Approve Form</h3>
                                     </div>
                                 </div>
                             </div>
 
 
 
-                            <form>
+                            <form action="{{ route('loan.store') }}" method="post">
+                                @csrf
                                 <div class="form-group row">
-                                    <label class="col-form-label col-md-2">Search Employee ID</label>
+                                    <label class="col-form-label col-md-2">Employee</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-form-label col-md-2">Employee No</label>
-                                    <div class="col-md-4">
-                                        <input type="text" class="form-control">
-                                    </div>
-                                    <label class="col-form-label col-md-2">Issued Date</label>
-                                    <div class="col-md-4">
-                                        <div class="cal-icon">
-                                            <input class="form-control datetimepicker" value="01-01-2019" type="text">
-                                        </div>
+                                        <select name="user" id="user" class="select" required>
+                                            @foreach($users as $user)
+                                                <option value="{{ $user->id }}" data-grade="{{ $user->grade->name }}">{{ $user->username }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Loan No</label>
                                     <div class="col-md-4">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="loan_number" required>
                                     </div>
-                                    <label class="col-form-label col-md-2">Maximum Amount (Rs.)</label>
+                                    <label class="col-form-label col-md-2">Issued Date</label>
                                     <div class="col-md-4">
-                                        <input type="text" class="form-control">
+                                        <div class="cal-icon">
+                                            <input class="form-control datetimepicker" name="issued_date" type="date" required>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Required Amount (Rs.)</label>
                                     <div class="col-md-4">
-                                        <input type="text" class="form-control">
+                                        <input type="number" step="0.01" class="form-control" name="amount" required>
                                     </div>
                                     <label class="col-form-label col-md-2">Monthly Installment (Rs.)</label>
                                     <div class="col-md-4">
-                                        <input type="text" class="form-control">
+                                        <input type="number" step="0.01" class="form-control" name="monthly_installment" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Duration (Months)</label>
                                     <div class="col-md-4">
-                                        <input type="text" class="form-control">
+                                        <input type="number" class="form-control" name="duration" required>
                                     </div>
                                 </div>
 
@@ -129,52 +124,20 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Employee No</th>
-                                                        <th>Month</th>
-                                                        <th>Advance Amount (Rs.)</th>
-                                                        <th class="text-center">Status</th>
+                                                        <th>Date</th>
+                                                        <th>Loan Amount (Rs.)</th>
+                                                        <th>Duration</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                @foreach($loans as $loan)
                                                     <tr>
-                                                        <td>1</td>
-                                                        <td>2</td>
-                                                        <td>8000.00</td>
-                                                        <td class="text-center">
-                                                            <div class="action-label">
-                                                                <a class="btn btn-white btn-sm btn-rounded" href="javascript:void(0);">
-                                                                    <i class="fa fa-dot-circle-o text-purple"></i> New
-                                                                </a>
-                                                            </div>
-                                                        </td>
-
+                                                        <td>{{ $loan->user_id }}</td>
+                                                        <td>{{ $loan->issued_date }}</td>
+                                                        <td>{{ $loan->amount }}</td>
+                                                        <td>{{ $loan->duration }}</td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td>2</td>
-                                                        <td>8000.00</td>
-                                                        <td class="text-center">
-                                                            <div class="action-label">
-                                                                <a class="btn btn-white btn-sm btn-rounded" href="javascript:void(0);">
-                                                                    <i class="fa fa-dot-circle-o text-success"></i> Approved
-                                                                </a>
-                                                            </div>
-                                                        </td>
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3</td>
-                                                        <td>2</td>
-                                                        <td>8000.00</td>
-                                                        <td class="text-center">
-                                                            <div class="action-label">
-                                                                <a class="btn btn-white btn-sm btn-rounded" href="javascript:void(0);">
-                                                                    <i class="fa fa-dot-circle-o text-danger"></i> Declined
-                                                                </a>
-                                                            </div>
-                                                        </td>
-
-                                                    </tr>
-
+                                                @endforeach
                                             </table>
                                         </div>
                                     </div>

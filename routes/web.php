@@ -40,6 +40,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/leave', [App\Http\Controllers\LeaveController::class, 'store'])->name('leave.store');
 
     Route::get('/loan', [App\Http\Controllers\LoanController::class, 'index'])->name('loan');
+    Route::post('/loan', [App\Http\Controllers\LoanController::class, 'store'])->name('loan.store');
+
     Route::get('/month-salary', [App\Http\Controllers\SalaryController::class, 'index'])->name('month-salary');
 
     Route::get('/employee-profile', [App\Http\Controllers\EmployeeProfileController::class, 'index'])->name('employee-profile.index');
