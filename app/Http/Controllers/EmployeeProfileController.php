@@ -36,4 +36,8 @@ class EmployeeProfileController extends Controller
 
         return view('pages.employee-profile.index')->with(['user'=>$user,'grades'=>$grades]);
     }
+
+    public function allProfiles(){
+        return view('pages.employee-profile.allProfiles');
+    }
 }

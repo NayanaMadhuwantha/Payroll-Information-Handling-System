@@ -12,7 +12,7 @@
                     <span>Employees</span>
                 </li>
                 <li class="submenu">
-                    <a href="{{ route('employee-profile.index') }}"><i class="la la-user"></i> <span> Profile </span> </a>
+                    <a href="{{ route('employee-profile.allProfiles') }}"><i class="la la-user"></i> <span> Profile </span> </a>
                 </li>
                 <li>
                     <a href="{{ route('leave') }}"><i class="la la-file-text"></i> <span>Leave</span></a>

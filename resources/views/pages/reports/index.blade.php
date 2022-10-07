@@ -34,7 +34,7 @@
 </div>
 
 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6">
-    <a href="monthly-leave-report.html">
+    <a href="{{ route('leaveReport') }}">
         <div class="card dash-widget">
             <div class="card-body p-4">
                 <span class="dash-widget-icon"><i class="fa fa-usd"></i></span>
@@ -47,7 +47,7 @@
     </a>
 </div>
 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6">
-    <a href="monthly-overtime-report.html">
+    <a href="{{ route('overtimeReport') }}">
         <div class="card dash-widget">
             <div class="card-body p-4">
                 <span class="dash-widget-icon"><i class="fa fa-diamond"></i></span>
@@ -60,7 +60,7 @@
     </a>
 </div>
 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6">
-    <a href="monthly-deduction-report.html">
+    <a href="{{ route('deductionReport') }}">
         <div class="card dash-widget">
             <div class="card-body p-4">
                 <span class="dash-widget-icon"><i class="fa fa-user"></i></span>
@@ -73,7 +73,7 @@
     </a>
 </div>
 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6">
-    <a href="monthly-salary-report.html">
+    <a href="{{ route('monthsalaryReport') }}">
         <div class="card dash-widget">
             <div class="card-body p-4">
                 <span class="dash-widget-icon"><i class="fa fa-user"></i></span>
@@ -86,7 +86,7 @@
     </a>
 </div>
 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6">
-    <a href="epf-etf-report.html">
+    <a href="{{ route('epfetfReport') }}">
         <div class="card dash-widget">
             <div class="card-body p-4">
                 <span class="dash-widget-icon"><i class="fa fa-user"></i></span>

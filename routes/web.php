@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/salary-slip', [App\Http\Controllers\SalaryController::class, 'salarySlip'])->name('salarySlip');
 
     Route::get('/employee-profile', [App\Http\Controllers\EmployeeProfileController::class, 'index'])->name('employee-profile.index');
+    Route::get('/all-profiles', [App\Http\Controllers\EmployeeProfileController::class, 'allProfiles'])->name('employee-profile.allProfiles');
     Route::post('/employee-profile/{employee_id}', [App\Http\Controllers\EmployeeProfileController::class, 'update'])->name('employee-profile.update');
 
     Route::get('/all-reports', [App\Http\Controllers\ReportsController::class, 'index'])->name('reports');
