@@ -47,7 +47,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/loan', [App\Http\Controllers\LoanController::class, 'store'])->name('loan.store');
 
     Route::get('/month-salary', [App\Http\Controllers\SalaryController::class, 'index'])->name('month-salary');
+    Route::get('/salary-slip', [App\Http\Controllers\SalaryController::class, 'salarySlip'])->name('salarySlip');
 
     Route::get('/employee-profile', [App\Http\Controllers\EmployeeProfileController::class, 'index'])->name('employee-profile.index');
     Route::post('/employee-profile/{employee_id}', [App\Http\Controllers\EmployeeProfileController::class, 'update'])->name('employee-profile.update');
+
+    Route::get('/all-reports', [App\Http\Controllers\ReportsController::class, 'index'])->name('reports');
+    Route::get('/allowance-report', [App\Http\Controllers\ReportsController::class, 'allowanceReport'])->name('allowanceReport');
+    Route::get('/overtime-report', [App\Http\Controllers\ReportsController::class, 'overtimeReport'])->name('overtimeReport');
+    Route::get('/leave-report', [App\Http\Controllers\ReportsController::class, 'leaveReport'])->name('leaveReport');
+    Route::get('/deduction-report', [App\Http\Controllers\ReportsController::class, 'deductionReport'])->name('deductionReport');
+    Route::get('/month-salary-report', [App\Http\Controllers\ReportsController::class, 'monthsalaryReport'])->name('monthsalaryReport');
+    Route::get('/epf-etf-report', [App\Http\Controllers\ReportsController::class, 'epfetfReport'])->name('epfetfReport');
 });

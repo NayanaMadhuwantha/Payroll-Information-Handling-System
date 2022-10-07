@@ -9,4 +9,8 @@ class SalaryController extends Controller
     public function index(){
         return view('pages.month-salary.index');
     }
+
+    public function salarySlip(){
+        return view('pages.month-salary.salarySlip');
+    }
 }

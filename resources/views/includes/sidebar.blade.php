@@ -38,7 +38,7 @@
                 <li>
                     <a href="{{ route('settings') }}"><i class="la la-cog"></i> <span>Settings</span></a>
                 </li>
-<!--                <li class="submenu">
+               <li class="submenu">
                     <a href="#"><i class="la la-key"></i> <span> Authentication </span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="error-404.html">Login </a></li>
@@ -46,12 +46,13 @@
                         <li><a href="error-404.html">404 Error </a></li>
                         <li><a href="error-500.html">500 Error </a></li>
                     </ul>
-                </li>-->
+                </li>
                 <li><a href="{{ route('month-salary') }}"><i class="la la-bullhorn"></i> <span>Salary</span></a></li>
                 <li class="submenu">
-                    <a href="#"><i class="la la-briefcase"></i> <span> Reports </span></a>
+                    <a href="{{ route('reports') }}"><i class="la la-briefcase"></i> <span> Reports </span></a>
                 </li>
             </ul>
         </div>
     </div>
 </div>
+
