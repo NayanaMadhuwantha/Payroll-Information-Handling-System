@@ -13,7 +13,7 @@ class LeaveController extends Controller
 {
     public function index(){
         $available_leaves = AvailableLeave::where('user_id',Auth::user()->id)->get();
-        $users = User::all();
+        $users = Auth::user();
         $remaining_leaves = AvailableLeave::where('user_id',Auth::user()->id)->where('no_of_leaves','>',0)->get();
         $approved_leaves = Leave::where('user_id',Auth::user()->id)->where('status','=','Approved')->get();
         $all_leaves = Leave::where('user_id',Auth::user()->id)->get();
@@ -28,7 +28,7 @@ class LeaveController extends Controller
 
     public function store(Request $request){
         $user = User::find($request->input('user'));
-        $users = User::all();
+        $users = Auth::user();
         $available_leaves = AvailableLeave::where('user_id',Auth::user()->id)->get();
         $remaining_leaves = AvailableLeave::where('user_id',Auth::user()->id)->where('no_of_leaves','>',0)->get();
         $approved_leaves = Leave::where('user_id',Auth::user()->id)->where('status','=','Approved')->get();
