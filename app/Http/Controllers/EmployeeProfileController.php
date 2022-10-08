@@ -12,7 +12,8 @@ class EmployeeProfileController extends Controller
     public function index(){
         $user = Auth::user();
         $grades = Grade::all();
-        return view('pages.employee-profile.index')->with(['user'=>$user,'grades'=>$grades]);
+        $users = User::all();
+        return view('pages.employee-profile.index')->with(['user'=>$user,'grades'=>$grades,'users'=>$users]);
     }
 
     public function update(Request $request, $id){
@@ -34,10 +35,13 @@ class EmployeeProfileController extends Controller
         $user->grade_id = (int)$request->input('grade');
         $user->save();
 
-        return view('pages.employee-profile.index')->with(['user'=>$user,'grades'=>$grades]);
+        $users = User::all();
+        return view('pages.employee-profile.index')->with(['user'=>$user,'grades'=>$grades,'users'=>$users]);
     }
 
     public function allProfiles(){
-        return view('pages.employee-profile.allProfiles');
+        $users = User::all();
+        $grades = Grade::all();
+        return view('pages.employee-profile.allProfiles')->with(['grades'=>$grades,'users'=>$users]);
     }
 }

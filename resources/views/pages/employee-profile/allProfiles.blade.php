@@ -29,44 +29,30 @@
 
 
                 <div class="row staff-grid-row">
-                    <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                        <div class="profile-widget">
-                            <div class="profile-img">
-                                <a href="{{ route('employee-profile.index') }}" class="avatar"><img src="{{ asset('images/profiles/avatar-02.jpg') }}" alt=""></a>
-                            </div>
-                            <div class="dropdown profile-action">
-                                <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                    @foreach($users as $user)
+                        <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
+                            <div class="profile-widget">
+                                <div class="profile-img">
+                                    <a href="{{ route('employee-profile.index') }}" class="avatar"><img src="{{ asset('images/profiles/avatar-02.jpg') }}" alt=""></a>
                                 </div>
-                            </div>
-                            <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="{{ route('employee-profile.index') }}">John Doe</a></h4>
-                            <div class="small text-muted">Web Designer</div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
-                        <div class="profile-widget">
-                            <div class="profile-img">
-                                <a href="{{ route('employee-profile.index') }}" class="avatar"><img src="{{ asset('images/profiles/avatar-09.jpg') }}" alt=""></a>
-                            </div>
-                            <div class="dropdown profile-action">
-                                <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                <div class="dropdown profile-action">
+                                    <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                    </div>
                                 </div>
+                                <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="{{ route('employee-profile.index') }}">{{ $user->full_name }}</a></h4>
+                                <div class="small text-muted">{{ $user->position }}</div>
                             </div>
-                            <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="{{ route('employee-profile.index') }}">Richard Miles</a></h4>
-                            <div class="small text-muted">Web Developer</div>
                         </div>
-                    </div>
+                    @endforeach
 
                 </div>
             </div>
 
 
-            <div id="edit_employee" class="modal custom-modal fade" role="dialog">
+<!--            <div id="edit_employee" class="modal custom-modal fade" role="dialog">
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -157,7 +143,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
 
 
             <div class="modal custom-modal fade" id="delete_employee" role="dialog">
