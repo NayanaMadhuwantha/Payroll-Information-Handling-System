@@ -69,5 +69,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/deduction-report', [App\Http\Controllers\ReportsController::class, 'getDeductionReport'])->name('deductionReport.get');
 
     Route::get('/month-salary-report', [App\Http\Controllers\ReportsController::class, 'monthsalaryReport'])->name('monthsalaryReport');
+    Route::post('/month-salary-report', [App\Http\Controllers\ReportsController::class, 'getMonthsalaryReport'])->name('monthsalaryReport.get');
+
     Route::get('/epf-etf-report', [App\Http\Controllers\ReportsController::class, 'epfetfReport'])->name('epfetfReport');
+    Route::post('/epf-etf-report', [App\Http\Controllers\ReportsController::class, 'GetEpfetfReport'])->name('epfetfReport.get');
 });

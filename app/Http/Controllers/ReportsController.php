@@ -7,6 +7,7 @@ use App\Models\AllowanceType;
 use App\Models\Deduction;
 use App\Models\Leave;
 use App\Models\OverTime;
+use App\Models\Salary;
 use App\Models\User;
 use DateTime;
 use Illuminate\Http\Request;
@@ -236,8 +237,31 @@ class ReportsController extends Controller
         return view('pages.reports.monthsalaryReport');
     }
 
+    public function getMonthsalaryReport(Request $request){
+        $month = $request->input('month');
+        $dateObj   = DateTime::createFromFormat('!m', $month);
+        $monthName = $dateObj->format('F');
+
+        $salaries = Salary::whereMonth('created_at', $month)->get();
+
+        foreach ($salaries as $salary){
+            $user = User::where('id',$salary->user_id)->first();
+            $salary->username = $user->username;
+            $salary->basic = $user->basic_salary;
+        }
+
+        return view('pages.reports.monthsalaryReport')->with([
+            'salaries' => $salaries,
+            'month_name' => $monthName
+        ]);
+    }
+
 
     public function epfetfReport(){
+        return view('pages.reports.epfetfReport');
+    }
+
+    public function GetEpfetfReport(Request $request){
         return view('pages.reports.epfetfReport');
     }
 }
