@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Allowance;
 use App\Models\AllowanceType;
 use App\Models\Leave;
+use App\Models\OverTime;
 use App\Models\User;
 use DateTime;
 use Illuminate\Http\Request;
@@ -56,6 +57,56 @@ class ReportsController extends Controller
 
     public function overtimeReport(){
         return view('pages.reports.overtimeReport');
+    }
+
+    public function getOvertimeReport(Request $request){
+        $month = $request->input('month');
+        $dateObj   = DateTime::createFromFormat('!m', $month);
+        $monthName = $dateObj->format('F');
+
+        $users = User::all();
+
+        $totals['normal_ot_hours'] = 0;
+        $totals['normal_ot_amount'] = 0;
+        $totals['double_ot_hours'] = 0;
+        $totals['double_ot_amount'] = 0;
+        $totals['total_ot_amount'] = 0;
+
+        foreach ($users as $user){
+            $user->normal_ot_hours = OverTime::where('month',$month)
+                ->where('user_id',$user->id)
+                ->pluck('normal_ot_hours')
+                ->sum();
+
+            $user->normal_ot_amount = OverTime::where('month',$month)
+                ->where('user_id',$user->id)
+                ->pluck('normal_ot_amount')
+                ->sum();
+
+            $user->double_ot_hours = OverTime::where('month',$month)
+                ->where('user_id',$user->id)
+                ->pluck('double_ot_hours')
+                ->sum();
+
+            $user->double_ot_amount = OverTime::where('month',$month)
+                ->where('user_id',$user->id)
+                ->pluck('double_ot_amount')
+                ->sum();
+
+            $user->total_ot_amount = $user->normal_ot_amount + $user->double_ot_amount;
+
+            $totals['normal_ot_hours'] += $user->normal_ot_hours;
+            $totals['normal_ot_amount'] += $user->normal_ot_amount;
+            $totals['double_ot_hours'] += $user->double_ot_hours;
+            $totals['double_ot_amount'] += $user->double_ot_amount;
+            $totals['total_ot_amount'] += $user->normal_ot_amount+$user->double_ot_amount;
+        }
+
+        return view('pages.reports.overtimeReport')->with([
+            'users' => $users,
+            'month_name' => $monthName,
+            'totals' => $totals
+        ]);
     }
 
 

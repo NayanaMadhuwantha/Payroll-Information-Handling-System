@@ -60,6 +60,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/allowance-report', [App\Http\Controllers\ReportsController::class, 'getAllowanceReport'])->name('allowanceReport.get');
 
     Route::get('/overtime-report', [App\Http\Controllers\ReportsController::class, 'overtimeReport'])->name('overtimeReport');
+    Route::post('/overtime-report', [App\Http\Controllers\ReportsController::class, 'getOvertimeReport'])->name('overtimeReport.get');
 
     Route::get('/leave-report', [App\Http\Controllers\ReportsController::class, 'leaveReport'])->name('leaveReport');
     Route::post('/leave-report', [App\Http\Controllers\ReportsController::class, 'getLeaveReport'])->name('leaveReport.get');
