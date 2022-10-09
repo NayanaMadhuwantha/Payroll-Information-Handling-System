@@ -53,7 +53,10 @@
                             </form>
 
                             <h3 class="page-title text-center mb-4 text-decoration-underline">Monthly Overtime
-                                Report</h3>
+                                Report
+                                @isset($month_name)
+                                    - {{ $month_name }}
+                                @endisset</h3>
 
                             <div class="form-group row">
                                 <div class="table-responsive table-striped table-bordered">

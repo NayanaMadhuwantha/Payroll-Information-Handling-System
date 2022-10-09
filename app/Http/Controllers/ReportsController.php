@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Allowance;
 use App\Models\AllowanceType;
+use App\Models\Deduction;
 use App\Models\Leave;
 use App\Models\OverTime;
 use App\Models\User;
@@ -179,6 +180,55 @@ class ReportsController extends Controller
 
     public function deductionReport(){
         return view('pages.reports.deductionReport');
+    }
+
+    public function getDeductionReport(Request $request){
+        $month = $request->input('month');
+        $dateObj   = DateTime::createFromFormat('!m', $month);
+        $monthName = $dateObj->format('F');
+
+        $users = User::all();
+
+        foreach ($users as $user){
+            $user->deduction_1 = Deduction::where('deduction_types.name','LIKE','%deduction%')
+                ->where('month', $month)
+                ->where('user_id',$user->id)
+                ->join('deduction_types','deduction_types.id','=','deductions.deduction_type_id')
+                ->pluck('full_amount')
+                ->sum();
+
+            $user->nopay = Deduction::where('deduction_types.name','LIKE','%absent%')
+                ->where('month', $month)
+                ->where('user_id',$user->id)
+                ->join('deduction_types','deduction_types.id','=','deductions.deduction_type_id')
+                ->pluck('full_amount')
+                ->sum();
+
+            $user->food = Deduction::where('deduction_types.name','LIKE','%food%')
+                ->where('month', $month)
+                ->where('user_id',$user->id)
+                ->join('deduction_types','deduction_types.id','=','deductions.deduction_type_id')
+                ->pluck('full_amount')
+                ->sum();
+
+            $user->welfare = Deduction::where('deduction_types.name','LIKE','%welfare%')
+                ->where('month', $month)
+                ->where('user_id',$user->id)
+                ->join('deduction_types','deduction_types.id','=','deductions.deduction_type_id')
+                ->pluck('full_amount')
+                ->sum();
+
+            $user->total = Deduction::where('month', $month)
+                ->where('user_id',$user->id)
+                ->join('deduction_types','deduction_types.id','=','deductions.deduction_type_id')
+                ->pluck('full_amount')
+                ->sum();
+        }
+
+        return view('pages.reports.deductionReport')->with([
+            'users' => $users,
+            'month_name' => $monthName
+        ]);
     }
 
 
