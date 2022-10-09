@@ -262,6 +262,30 @@ class ReportsController extends Controller
     }
 
     public function GetEpfetfReport(Request $request){
-        return view('pages.reports.epfetfReport');
+        $month = $request->input('month');
+        $dateObj   = DateTime::createFromFormat('!m', $month);
+        $monthName = $dateObj->format('F');
+
+        $salaries = Salary::whereMonth('created_at', $month)->get();
+
+        $totals['epf_12'] = 0;
+        $totals['etf_3'] = 0;
+        $totals['total'] = 0;
+
+        foreach ($salaries as $salary){
+            $user = User::where('id',$salary->user_id)->first();
+            $salary->username = $user->username;
+            $salary->basic = $user->basic_salary;
+
+            $totals['epf_12'] += $salary->epf_12;
+            $totals['etf_3'] += $salary->etf_3;
+            $totals['total'] += $salary->epf_12 + $salary->etf_3 + $salary->epf_8;
+        }
+
+        return view('pages.reports.epfetfReport')->with([
+            'salaries' => $salaries,
+            'month_name' => $monthName,
+            'totals' => $totals
+        ]);
     }
 }
