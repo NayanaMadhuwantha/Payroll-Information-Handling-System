@@ -50,7 +50,7 @@
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Employee</label>
                                     <div class="col-md-10">
-                                        <select name="user" id="user" class="select" required>
+                                        <select name="user" id="user" class="select form-select" required>
                                             @foreach($users as $user)
                                                 <option value="{{ $user->id }}" data-grade="{{ $user->grade->name }}">{{ $user->username }}</option>
                                             @endforeach

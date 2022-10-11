@@ -139,7 +139,7 @@
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Position</label>
                                     <div class="col-md-10">
-                                        <select name="position" required>
+                                        <select name="position" class="form-select" required>
                                             <option value="Web Developer">Web Developer</option>
                                             <option value="IT Manager">IT Manager</option>
                                             <option value="Marketing Manager">Marketing Manager</option>
@@ -185,7 +185,7 @@
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Gender</label>
                                     <div class="col-md-10">
-                                        <select name="gender" required>
+                                        <select name="gender" class="form-select" required>
                                             <option value="male">Male</option>
                                             <option value="female">Female</option>
                                         </select>
@@ -202,7 +202,7 @@
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Grade</label>
                                     <div class="col-md-10">
-                                        <select name="grade_id">
+                                        <select name="grade_id" class="form-select">
                                             @foreach($grades as $grade)
                                                 <option value="{{ $grade->id }}">{{ $grade->name }}</option>
                                             @endforeach
@@ -230,7 +230,7 @@
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-3">Grade</label>
                                     <div class="col-md-9">
-                                        <select name="grade_id" id="grade" required>
+                                        <select name="grade_id" id="grade" class="form-select" required>
                                             @foreach($grades as $grade)
                                                 <option value="{{ $grade->id }}"
                                                     data-per-day-salary-rate="{{ $grade->per_day_salary_rate }}"

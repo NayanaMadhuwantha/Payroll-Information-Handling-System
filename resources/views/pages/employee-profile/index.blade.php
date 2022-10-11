@@ -200,7 +200,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Designation <span class="text-danger">*</span></label>
-                                    <select name="position" class="select" required>
+                                    <select name="position" class="select form-select" required>
                                         <option value="Web Developer" {{ $user->position == 'Web Developer' ? 'selected' : '' }}>Web Developer</option>
                                         <option value="IT Manager" {{ $user->position == 'IT Manager' ? 'selected' : '' }}>IT Manager</option>
                                         <option value="Marketing Manager" {{ $user->position == 'Marketing Manager' ? 'selected' : '' }}>Marketing Manager</option>
@@ -210,7 +210,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Grade <span class="text-danger">*</span></label>
-                                    <select name="grade" class="select" required>
+                                    <select name="grade" class="select form-select" required>
                                         @foreach($grades as $grade)
                                             <option value="{{ $grade->id }}" {{  !empty($user->grade) ?? ($user->grade->id == $grade->id ? 'selected' : '') }}>{{ $grade->name }}</option>
                                         @endforeach
