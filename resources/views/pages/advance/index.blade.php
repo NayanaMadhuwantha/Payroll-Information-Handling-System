@@ -51,7 +51,7 @@
                         <div class="form-group row">
                             <label class="col-form-label col-md-2">Employee</label>
                             <div class="col-md-4">
-                                <select name="user" id="user" class="select" required>
+                                <select name="user" id="user" class="select form-select" required>
                                     @foreach($users as $user)
                                         <option value="{{ $user->id }}" data-grade="{{ $user->grade->name }}">{{ $user->username }}</option>
                                     @endforeach
@@ -69,7 +69,7 @@
                             </div>
                             <label class="col-form-label col-md-2">Month</label>
                             <div class="col-md-4">
-                                <select name="month" class="select" required>
+                                <select name="month" class="select form-select" required>
                                     <option value="1">January</option>
                                     <option value="2">February</option>
                                     <option value="3">March</option>
@@ -88,7 +88,7 @@
 
                         <div class="form-group row">
                             <label class="col-form-label col-md-2">Required Amount (Rs.)</label>
-                            <div class="col-md-10">
+                            <div class="col-md-10 mb-3">
                                 <input type="number" class="form-control" name="amount" required>
                             </div>
 

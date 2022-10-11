@@ -53,7 +53,7 @@
                         <div class="form-group row mb-30">
                             <label class="col-form-label col-md-4">Employee</label>
                             <div class="col-md-8">
-                                <select name="user" id="user" class="select" required>
+                                <select name="user" id="user" class="select form-select" required>
                                     @foreach($users as $user)
                                         <option value="{{ $user->id }}"
                                                 data-rate="{{ $user->grade->ot_rate }}"
@@ -75,7 +75,7 @@
                         <div class="form-group row">
                             <label class="col-form-label col-md-4">Month</label>
                             <div class="col-md-8">
-                                <select name="month" class="select" required>
+                                <select name="month" class="select form-select" required>
                                     <option value="1">January</option>
                                     <option value="2">February</option>
                                     <option value="3">March</option>

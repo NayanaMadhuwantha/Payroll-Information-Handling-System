@@ -31,7 +31,7 @@
                                 <div class="form-group row offset-md-1">
                                     <label class="col-form-label col-md-1">Month :- </label>
                                     <div class="col-md-2">
-                                        <select name="month" class="select" required>
+                                        <select name="month" class="select form-select" required>
                                             <option value="1">January</option>
                                             <option value="2">February</option>
                                             <option value="3">March</option>

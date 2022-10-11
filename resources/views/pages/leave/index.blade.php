@@ -64,7 +64,7 @@
                         <div class="form-group row">
                             <label class="col-form-label col-md-2">Employee</label>
                             <div class="col-md-4">
-                                <select class="select" name="user">
+                                <select class="select form-select" name="user">
                                     @foreach($users as $user)
                                         <option value="{{ $user->id }}">{{ $user->username }}</option>
                                     @endforeach
@@ -72,7 +72,7 @@
                             </div>
                             <label class="col-form-label col-md-2">Leave Type</label>
                             <div class="col-md-4">
-                                <select class="select" name="leave_type">
+                                <select class="select form-select" name="leave_type">
                                     @foreach($remaining_leaves as $remaining_leave)
                                         <option value="{{ $remaining_leave->leave_type_id }}">{{ $remaining_leave->type->name }}</option>
                                     @endforeach
@@ -99,9 +99,9 @@
                         <div class="form-group row">
                             <label class="col-form-label col-md-2">Reason</label>
                             <div class="col-md-10">
-                                <div class="cal-icon">
+                                {{-- <div class="cal-icon"> --}}
                                     <textarea  name="reason" class="form-control" ></textarea>
-                                </div>
+                                {{-- </div> --}}
                             </div>
                         </div>
                         @isset($message)

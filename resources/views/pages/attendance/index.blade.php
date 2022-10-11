@@ -32,7 +32,7 @@
             <div class="tab-pane active" id="markattendance" role="tabpanel" aria-labelledby="markattendance-tab">
                 <!-- <h4>Expense Approval Settings</h4> -->
 
-                <div class="col-md-6 offset-md-3 mt-lg-5">
+                <div class="col-md-6 offset-md-3">
 
                     <!-- <div class="page-header">
                         <div class="row">
@@ -57,7 +57,7 @@
                         <div class="form-group row">
                             <label class="col-form-label col-md-2">Employee</label>
                             <div class="col-md-4">
-                                <select name="user" id="user" class="select" required>
+                                <select name="user" id="user" class="select form-select" required>
                                     @foreach($users as $user)
                                         <option value="{{ $user->id }}" data-rate="{{ $user->grade->ot_rate }}">{{ $user->username }}</option>
                                     @endforeach

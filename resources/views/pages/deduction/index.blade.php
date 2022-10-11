@@ -59,7 +59,7 @@
                         <div class="form-group row mb-30 offset-md-3">
                             <label class="col-form-label col-md-2">Employee</label>
                             <div class="col-md-6">
-                                <select name="user" id="user" class="select" required>
+                                <select name="user" id="user" class="select form-select" required>
                                     @foreach($users as $user)
                                         <option value="{{ $user->id }}" data-grade="{{ $user->grade->name }}">{{ $user->username }}</option>
                                     @endforeach
@@ -69,7 +69,7 @@
                         <div class="form-group row">
                             <label class="col-form-label col-md-1">Month</label>
                             <div class="col-md-3">
-                                <select name="month" class="select" required>
+                                <select name="month" class="select form-select" required>
                                     <option value="1">January</option>
                                     <option value="2">February</option>
                                     <option value="3">March</option>
@@ -273,7 +273,7 @@
                         <div class="form-group row">
                             <label class="col-form-label col-md-2">Month</label>
                             <div class="col-md-4">
-                                <select name="month" class="select" required>
+                                <select name="month" class="select form-select" required>
                                     <option value="1">January</option>
                                     <option value="2">February</option>
                                     <option value="3">March</option>
@@ -297,7 +297,7 @@
                         <div class="form-group row">
                             <label class="col-form-label col-md-2">Employee</label>
                             <div class="col-md-4">
-                                <select name="user" id="user" class="select" required>
+                                <select name="user" id="user" class="select form-select" required>
                                     @foreach($users as $user)
                                         <option value="{{ $user->id }}" data-grade="{{ $user->grade->name }}">{{ $user->username }}</option>
                                     @endforeach
@@ -359,7 +359,7 @@
                         <div class="form-group row">
                             <label class="col-form-label col-md-2">Month</label>
                             <div class="col-md-4">
-                                <select name="month" class="select" required>
+                                <select name="month" class="select form-select" required>
                                     <option value="1">January</option>
                                     <option value="2">February</option>
                                     <option value="3">March</option>
@@ -376,7 +376,7 @@
                             </div>
                             <label class="col-form-label col-md-2">Employee</label>
                             <div class="col-md-4">
-                                <select name="user" id="user" class="select" required>
+                                <select name="user" id="user" class="select form-select" required>
                                     @foreach($users as $user)
                                         <option value="{{ $user->id }}" data-grade="{{ $user->grade->name }}">{{ $user->username }}</option>
                                     @endforeach
@@ -463,7 +463,7 @@
                         <div class="form-group row">
                             <label class="col-form-label col-md-3">Month</label>
                             <div class="col-md-3">
-                                <select name="month" class="select" required>
+                                <select name="month" class="select form-select" required>
                                     <option value="1">January</option>
                                     <option value="2">February</option>
                                     <option value="3">March</option>
