@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class AttendanceController extends Controller
 {
     public function index(){
-        $users = User::all();
+        $users = User::getAllUsers();
         $attendance = Attendance::all();
         return view('pages.attendance.index')->with([
             'users' => $users,
@@ -26,7 +26,7 @@ class AttendanceController extends Controller
         $attendance->time_out = $request->input('time_out');
         $attendance->save();
 
-        $users = User::all();
+        $users = User::getAllUsers();
         $attendance = Attendance::all();
         return view('pages.attendance.index')->with([
             'users' => $users,

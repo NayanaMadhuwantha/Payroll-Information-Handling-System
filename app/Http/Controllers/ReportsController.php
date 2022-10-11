@@ -28,7 +28,7 @@ class ReportsController extends Controller
         $dateObj   = DateTime::createFromFormat('!m', $month);
         $monthName = $dateObj->format('F');
 
-        $users = User::all();
+        $users = User::getAllUsers();
         foreach ($users as $user){
             $user->attendance_allowances = Allowance::where('allowance_types.name','LIKE','%attendance%')
                 ->where('allowances.month',$month)
@@ -66,7 +66,7 @@ class ReportsController extends Controller
         $dateObj   = DateTime::createFromFormat('!m', $month);
         $monthName = $dateObj->format('F');
 
-        $users = User::all();
+        $users = User::getAllUsers();
 
         $totals['normal_ot_hours'] = 0;
         $totals['normal_ot_amount'] = 0;
@@ -121,7 +121,7 @@ class ReportsController extends Controller
         $dateObj   = DateTime::createFromFormat('!m', $month);
         $monthName = $dateObj->format('F');
 
-        $users = User::all();
+        $users = User::getAllUsers();
 
         foreach ($users as $user){
             $user->annual_leaves = Leave::where('leave_types.name','LIKE','%annual%')
@@ -188,7 +188,7 @@ class ReportsController extends Controller
         $dateObj   = DateTime::createFromFormat('!m', $month);
         $monthName = $dateObj->format('F');
 
-        $users = User::all();
+        $users = User::getAllUsers();
 
         foreach ($users as $user){
             $user->deduction_1 = Deduction::where('deduction_types.name','LIKE','%deduction%')

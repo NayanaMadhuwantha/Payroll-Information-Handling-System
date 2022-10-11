@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class AdvanceController extends Controller
 {
     public function index(){
-        $users = User::all();
+        $users = User::getAllUsers();
         $advance = Advance::all();
         return view('pages.advance.index')->with([
             'users' => $users,
@@ -24,7 +24,7 @@ class AdvanceController extends Controller
         $advance->amount = $request->input('amount');
         $advance->save();
 
-        $users = User::all();
+        $users = User::getAllUsers();
         $advance = Advance::all();
         return view('pages.advance.index')->with([
             'users' => $users,

@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 class AllowanceController extends Controller
 {
     public function index(){
-        $users = User::all();
+        $users = User::getAllUsers();
         $allowance = Allowance::all();
 
         foreach ($users as $user){
@@ -49,7 +49,7 @@ class AllowanceController extends Controller
             $attendance_allowance->save();
         }
 
-        $users = User::all();
+        $users = User::getAllUsers();
         $allowance = Allowance::all();
         foreach ($users as $user){
             $user->leaves  = Leave::where('user_id',$user->id)->where('status','Approved')->whereYear('created_at', Carbon::now()->year)->pluck('no_of_days')->sum();
@@ -82,7 +82,7 @@ class AllowanceController extends Controller
             $attendance_allowance->save();
         }
 
-        $users = User::all();
+        $users = User::getAllUsers();
         $allowance = Allowance::all();
         foreach ($users as $user){
             $user->leaves  = Leave::where('user_id',$user->id)->where('status','Approved')->whereYear('created_at', Carbon::now()->year)->pluck('no_of_days')->sum();

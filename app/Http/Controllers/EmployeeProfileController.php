@@ -12,7 +12,7 @@ class EmployeeProfileController extends Controller
     public function index(){
         $user = Auth::user();
         $grades = Grade::all();
-        $users = User::all();
+        $users = User::getAllUsers();
         return view('pages.employee-profile.index')->with(['user'=>$user,'grades'=>$grades,'users'=>$users]);
     }
 
@@ -35,12 +35,12 @@ class EmployeeProfileController extends Controller
         $user->grade_id = (int)$request->input('grade');
         $user->save();
 
-        $users = User::all();
+        $users = User::getAllUsers();
         return view('pages.employee-profile.index')->with(['user'=>$user,'grades'=>$grades,'users'=>$users]);
     }
 
     public function allProfiles(){
-        $users = User::all();
+        $users = User::getAllUsers();
         $grades = Grade::all();
         return view('pages.employee-profile.allProfiles')->with(['grades'=>$grades,'users'=>$users]);
     }

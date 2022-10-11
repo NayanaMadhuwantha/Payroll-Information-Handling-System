@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class SalaryController extends Controller
 {
     public function index(){
-        $users = User::all();
+        $users = User::getAllUsers();
         return view('pages.month-salary.index')->with([
             'users' => $users
         ]);
@@ -45,7 +45,7 @@ class SalaryController extends Controller
         $salary->total_salary = $basic + $allowances - $deductions + ($basic * 23 /100);
         $salary->save();
 
-        $users = User::all();
+        $users = User::getAllUsers();
         return view('pages.month-salary.index')->with([
             'users' => $users
         ]);

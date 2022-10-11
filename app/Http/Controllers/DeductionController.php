@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class DeductionController extends Controller
 {
     public function index(){
-        $users = User::all();
+        $users = User::getAllUsers();
         $deductions = Deduction::get();
         return view('pages.deduction.index')->with([
             'users' => $users,
@@ -35,7 +35,7 @@ class DeductionController extends Controller
             $deduction->save();
         }
 
-        $users = User::all();
+        $users = User::getAllUsers();
         $deductions = Deduction::get();
         return view('pages.deduction.index')->with([
             'users' => $users,
@@ -59,7 +59,7 @@ class DeductionController extends Controller
             $deduction->save();
         }
 
-        $users = User::all();
+        $users = User::getAllUsers();
         $deductions = Deduction::get();
         return view('pages.deduction.index')->with([
             'users' => $users,
@@ -83,7 +83,7 @@ class DeductionController extends Controller
             $deduction->save();
         }
 
-        $users = User::all();
+        $users = User::getAllUsers();
         $deductions = Deduction::get();
         return view('pages.deduction.index')->with([
             'users' => $users,

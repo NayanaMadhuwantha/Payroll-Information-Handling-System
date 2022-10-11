@@ -52,4 +52,13 @@ class User extends Authenticatable
     public function allowances(){
         return $this->hasMany(Allowance::class);
     }
+
+    public function getAllUsers(){
+        if (auth()->user()->position == "admin"){
+            return User::all();
+        }
+        else{
+            return User::where('id',auth()->user()->id)->get();
+        }
+    }
 }

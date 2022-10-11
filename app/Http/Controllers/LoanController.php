@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class LoanController extends Controller
 {
     public function index(){
-        $users = User::all();
+        $users = User::getAllUsers();
         $loans = Loan::all();
 
         return view('pages.loan.index')->with([
@@ -28,7 +28,7 @@ class LoanController extends Controller
         $loan->duration = $request->input('duration');
         $loan->save();
 
-        $users = User::all();
+        $users = User::getAllUsers();
         $loans = Loan::all();
         return view('pages.loan.index')->with([
             'users' => $users,
