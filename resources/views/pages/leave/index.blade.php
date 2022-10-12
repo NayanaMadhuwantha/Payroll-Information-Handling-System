@@ -49,7 +49,7 @@
 
                     <div class="row">
                         @foreach($available_leaves as $available_leave)
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="stats-info">
                                     <h6>{{ $available_leave->type->name }}</h6>
                                     <h4>{{ $available_leave->no_of_leaves }}</h4>
@@ -216,7 +216,7 @@
                                                     <div class="dropdown dropdown-action">
                                                         <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit_leave"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit_leave"><i class="fa fa-pencil m-r-5"></i> Handle Leave</a>
                                                             <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_approve"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                         </div>
                                                     </div>
@@ -254,7 +254,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Edit Leave</h5>
+                    <h5 class="modal-title">Handle Leave</h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -262,13 +262,13 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label>Leave Type <span class="text-danger">*</span></label>
-                            <select class="select">
-                            <option>Select Leave Type</option>
-                            <option>Casual Leave 12 Days</option>
+                            <label>Status<span class="text-danger">*</span></label>
+                            <select class="select form-select">
+                            <option>Aproved</option>
+                            <option>Rejected</option>
                             </select>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label>From <span class="text-danger">*</span></label>
                             <div class="cal-icon">
                                 <input class="form-control datetimepicker" value="01-01-2019" type="text">
@@ -291,7 +291,7 @@
                         <div class="form-group">
                             <label>Leave Reason <span class="text-danger">*</span></label>
                             <textarea rows="4" class="form-control">Going to hospital</textarea>
-                        </div>
+                        </div> --}}
                         <div class="submit-section">
                             <button class="btn btn-primary submit-btn">Save</button>
                         </div>
@@ -307,8 +307,8 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="form-header">
-                        <h3>Delete Leave</h3>
-                        <p>Are you sure want to Cancel this leave?</p>
+                        <h3>Delete Record</h3>
+                        <p>Are you sure want to Delete this record?</p>
                     </div>
                     <div class="modal-btn delete-action">
                         <div class="row">

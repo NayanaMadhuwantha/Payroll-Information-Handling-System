@@ -4,7 +4,7 @@
 <div class="container">
 
 <div class="account-page">
-<div class="header">
+    <div class="header">
 
         <div class="header-left">
             <a href="admin-dashboard.html" class="logo">
@@ -54,15 +54,14 @@
                                     <div class="col">
                                         <label>Password</label>
                                     </div>
-                                    <div class="col-auto">
+                                    {{-- <div class="col-auto">
                                         <a class="text-muted" href="forgot-password.html">
                                             Forgot password?
                                         </a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="position-relative">
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-<!--                                    <span class="fa fa-eye-slash" id="toggle-password"></span>-->
                                 </div>
 
                                 @error('password')
@@ -70,16 +69,6 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                            </div>
-                            <div class="form-group">
-                                <div class="form-group">
-                                    <label>Select Position</label>
-                                    <select class="form-control form-select">
-                                        <option>Select Position</option>
-                                        <option>Option 1</option>
-                                        <option>Option 2</option>
-                                    </select>
-                                </div>
                             </div>
 
 
@@ -93,6 +82,7 @@
 
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
