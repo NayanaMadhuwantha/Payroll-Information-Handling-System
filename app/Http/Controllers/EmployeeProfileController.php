@@ -9,8 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class EmployeeProfileController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
         $user = Auth::user();
+
+        if($request->has('user_id')){
+            $user = User::find($request->input('user_id'));
+        }
+
         $grades = Grade::all();
         $users = User::getAllUsers();
         return view('pages.employee-profile.index')->with(['user'=>$user,'grades'=>$grades,'users'=>$users]);

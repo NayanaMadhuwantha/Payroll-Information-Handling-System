@@ -99,7 +99,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('employee-profile.update',Auth::user()->id) }}" method="post">
+                    <form action="{{ route('employee-profile.update',$user->id) }}" method="post">
                         @csrf
                         <div class="row">
                             <div class="col-md-12">

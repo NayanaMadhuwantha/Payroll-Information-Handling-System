@@ -33,7 +33,7 @@
                         <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
                             <div class="profile-widget">
                                 <div class="profile-img">
-                                    <a href="{{ route('employee-profile.index') }}" class="avatar"><img src="{{ asset('images/profiles/avatar-02.jpg') }}" alt=""></a>
+                                    <a href="{{ route('employee-profile.index') }}?user_id={{$user->id}}" class="avatar"><img src="{{ asset('images/profiles/avatar-02.jpg') }}" alt=""></a>
                                 </div>
                                 <div class="dropdown profile-action">
                                     <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
@@ -42,7 +42,7 @@
                                         <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                     </div>
                                 </div>
-                                <h4 class="user-name m-t-10 mb-0 text-ellipsis"><a href="{{ route('employee-profile.index') }}">{{ $user->full_name }}</a></h4>
+                                <h4 class="user-name m-t-10 mb-0 text-ellipsis" onclick="redirectToUserProfile()"><a href="{{ route('employee-profile.index') }}?user_id={{$user->id}}">{{ $user->full_name }}</a></h4>
                                 <div class="small text-muted">{{ $user->position }}</div>
                             </div>
                         </div>
@@ -50,100 +50,6 @@
 
                 </div>
             </div>
-
-
-<!--            <div id="edit_employee" class="modal custom-modal fade" role="dialog">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Edit Employee</h5>
-
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label class="col-form-label">First Name <span class="text-danger">*</span></label>
-                                            <input class="form-control" value="John" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label class="col-form-label">Last Name</label>
-                                            <input class="form-control" value="Doe" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label class="col-form-label">Username <span class="text-danger">*</span></label>
-                                            <input class="form-control" value="johndoe" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label class="col-form-label">Email <span class="text-danger">*</span></label>
-                                            <input class="form-control" value="johndoe@example.com" type="email">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label class="col-form-label">Password</label>
-                                            <input class="form-control" value="johndoe" type="password">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label class="col-form-label">Confirm Password</label>
-                                            <input class="form-control" value="johndoe" type="password">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label class="col-form-label">Employee ID <span class="text-danger">*</span></label>
-                                            <input type="text" value="FT-0001" readonly class="form-control floating">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label class="col-form-label">Joining Date <span class="text-danger">*</span></label>
-                                            <div class="cal-icon"><input class="form-control datetimepicker" type="text"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label class="col-form-label">Phone </label>
-                                            <input class="form-control" value="9876543210" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label class="col-form-label">Company</label>
-
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Department <span class="text-danger">*</span></label>
-
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Designation <span class="text-danger">*</span></label>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="submit-section">
-                                    <button class="btn btn-primary submit-btn">Save</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
 
 
             <div class="modal custom-modal fade" id="delete_employee" role="dialog">
@@ -170,4 +76,10 @@
             </div>
 
         </div>
+
+<script type="application/javascript">
+    /*function redirectToUserProfile(user_id){
+        alert(user_id)
+    }*/
+</script>
 @endsection
