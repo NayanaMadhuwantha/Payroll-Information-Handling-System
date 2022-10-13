@@ -11,18 +11,26 @@ use Illuminate\Support\Facades\Auth;
 
 class LeaveController extends Controller
 {
-    public function index(){
-        $available_leaves = AvailableLeave::where('user_id',Auth::user()->id)->get();
-        $users = User::where('id',Auth::user()->id)->get();
-        $remaining_leaves = AvailableLeave::where('user_id',Auth::user()->id)->where('no_of_leaves','>',0)->get();
-        $approved_leaves = Leave::where('user_id',Auth::user()->id)->where('status','=','Approved')->get();
-        $all_leaves = Leave::where('user_id',Auth::user()->id)->get();
+    public function index(Request $request){
+
+        $user_id = Auth::user()->id;
+
+        if ($request->has('user_id')){
+            $user_id = $request->input('user_id');
+        }
+
+        $available_leaves = AvailableLeave::where('user_id',$user_id)->get();
+        $users = User::getAllUsers();
+        $remaining_leaves = AvailableLeave::where('user_id',$user_id)->where('no_of_leaves','>',0)->get();
+        $approved_leaves = Leave::where('user_id',$user_id)->where('status','=','Approved')->get();
+        $all_leaves = Leave::where('user_id',$user_id)->get();
         return view('pages.leave.index')->with([
             'available_leaves'=>$available_leaves,
             'users'=>$users,
             'remaining_leaves'=>$remaining_leaves,
             'approved_leaves'=>$approved_leaves,
-            'all_leaves'=>$all_leaves
+            'all_leaves'=>$all_leaves,
+            'selected_user_id'=>$user_id
         ]);
     }
 

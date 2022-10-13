@@ -64,9 +64,15 @@
                         <div class="form-group row">
                             <label class="col-form-label col-md-2">Employee</label>
                             <div class="col-md-4">
-                                <select class="select form-select" name="user">
+                                <select class="select form-select" name="user" id="user">
                                     @foreach($users as $user)
-                                        <option value="{{ $user->id }}">{{ $user->username }}</option>
+                                        <option value="{{ $user->id }}"
+                                                @isset($selected_user_id)
+                                                    @if($selected_user_id == $user->id)
+                                                        selected
+                                                    @endif
+                                                @endisset
+                                        >{{ $user->username }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -326,4 +332,17 @@
     </div>
 
 </div>
+
+<script type="module">
+
+    var submit = function(evt) {
+        var $form = $('<form action="{{ route('leave') }}" method="GET">');
+        $form.append('@csrf');
+        $form.append('<input name="user_id" value="'+evt.target.value+'" />');
+        $form.appendTo($('body')).submit();
+    };
+
+    var user_element = document.getElementById('user');
+    user_element.addEventListener('input', submit, false);
+</script>
 @endsection
