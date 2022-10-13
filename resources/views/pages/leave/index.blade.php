@@ -222,7 +222,7 @@
                                                     <div class="dropdown dropdown-action">
                                                         <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit_leave"><i class="fa fa-pencil m-r-5"></i> Handle Leave</a>
+                                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit_leave" onclick="handleLeave({{$leave->id}})"><i class="fa fa-pencil m-r-5"></i> Handle Leave</a>
                                                             <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_approve"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                         </div>
                                                     </div>
@@ -266,38 +266,16 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="{{ route("leave.handle") }}" method="POST">
+                        @csrf
                         <div class="form-group">
                             <label>Status<span class="text-danger">*</span></label>
-                            <select class="select form-select">
-                            <option>Aproved</option>
-                            <option>Rejected</option>
+                            <select class="select form-select" name="action">
+                                <option value="Approved">Approved</option>
+                                <option value="Rejected">Rejected</option>
                             </select>
                         </div>
-                        {{-- <div class="form-group">
-                            <label>From <span class="text-danger">*</span></label>
-                            <div class="cal-icon">
-                                <input class="form-control datetimepicker" value="01-01-2019" type="text">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>To <span class="text-danger">*</span></label>
-                            <div class="cal-icon">
-                                <input class="form-control datetimepicker" value="01-01-2019" type="text">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Number of days <span class="text-danger">*</span></label>
-                            <input class="form-control" readonly type="text" value="2">
-                        </div>
-                        <div class="form-group">
-                            <label>Remaining Leaves <span class="text-danger">*</span></label>
-                            <input class="form-control" readonly value="12" type="text">
-                        </div>
-                        <div class="form-group">
-                            <label>Leave Reason <span class="text-danger">*</span></label>
-                            <textarea rows="4" class="form-control">Going to hospital</textarea>
-                        </div> --}}
+                        <input type="hidden" name="leave_id" id="leave_id_for_submit">
                         <div class="submit-section">
                             <button class="btn btn-primary submit-btn">Save</button>
                         </div>
@@ -333,7 +311,7 @@
 
 </div>
 
-<script type="module">
+<script type="application/javascript">
 
     var submit = function(evt) {
         var $form = $('<form action="{{ route('leave') }}" method="GET">');
@@ -344,5 +322,9 @@
 
     var user_element = document.getElementById('user');
     user_element.addEventListener('input', submit, false);
+
+    function handleLeave(leave_id){
+        document.getElementById('leave_id_for_submit').value = leave_id;
+    }
 </script>
 @endsection

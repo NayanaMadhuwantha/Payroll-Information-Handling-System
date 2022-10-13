@@ -42,6 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/leave', [App\Http\Controllers\LeaveController::class, 'index'])->name('leave');
     Route::post('/leave', [App\Http\Controllers\LeaveController::class, 'store'])->name('leave.store');
+    Route::post('/handle-leave', [App\Http\Controllers\LeaveController::class, 'handleLeave'])->name('leave.handle');
 
     Route::get('/loan', [App\Http\Controllers\LoanController::class, 'index'])->name('loan');
     Route::post('/loan', [App\Http\Controllers\LoanController::class, 'store'])->name('loan.store');
