@@ -24,11 +24,13 @@
 
         <ul class="nav nav-tabs nav-tabs-bottom align-center" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#markattendance" role="tab" aria-controls="home" aria-selected="true">Aprove Leave</a>
+                <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#markattendance" role="tab" aria-controls="home" aria-selected="true">Apply Leave</a>
             </li>
+            @if(auth()->user()->position == 'admin')
             <li class="nav-item" role="presentation">
                 <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#attendancehanding" role="tab" aria-controls="profile" aria-selected="false">Handle Leave</a>
             </li>
+            @endif
         </ul>
 
         <div class="tab-content">
@@ -124,7 +126,7 @@
                         <div class="row my-4">
                             <div class="col-lg-12">
 
-                                <p>Aprove Leave Hisytory</p>
+                                <p>Approve Leave Hisytory</p>
                                 <div class="table-responsive">
                                     <table class="table table-striped custom-table mb-0">
                                         <thead>
