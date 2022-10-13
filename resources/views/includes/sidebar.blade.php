@@ -17,6 +17,7 @@
                 <li>
                     <a href="{{ route('leave') }}"><i class="la la-file-text"></i> <span>Leave</span></a>
                 </li>
+                @if(auth()->user()->position == 'admin')
                 <li class="submenu">
                     <a href="{{ route('allowance') }}"><i class="la la-rocket"></i> <span> Allowance</span></a>
                 </li>
@@ -26,6 +27,7 @@
                 <li class="submenu">
                     <a href="{{ route('advance') }}"><i class="la la-money"></i> <span> Advance </span></a>
                 </li>
+                @endif
                 <li class="submenu">
                     <a href="{{ route('loan') }}"><i class="la la-money"></i> <span> Loans </span></a>
                 </li>
@@ -35,9 +37,11 @@
 <!--                <li class="submenu">
                     <a href="#"><i class="la la-pie-chart"></i> <span> login History </span> </a>
                 </li>-->
+                @if(auth()->user()->position == 'admin')
                 <li>
                     <a href="{{ route('settings') }}"><i class="la la-cog"></i> <span>Settings</span></a>
                 </li>
+                @endif
                {{-- <li class="submenu">
                     <a href="#"><i class="la la-key"></i> <span> Authentication </span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
@@ -48,9 +52,11 @@
                     </ul>
                 </li> --}}
                 <li><a href="{{ route('month-salary') }}"><i class="la la-bullhorn"></i> <span>Salary</span></a></li>
+                @if(auth()->user()->position == 'admin')
                 <li class="submenu">
                     <a href="{{ route('reports') }}"><i class="la la-briefcase"></i> <span> Reports </span></a>
                 </li>
+                @endif
             </ul>
         </div>
     </div>
