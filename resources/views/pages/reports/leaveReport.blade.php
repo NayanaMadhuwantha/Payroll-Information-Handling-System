@@ -145,7 +145,7 @@
 
 
             <div class="col-md-12  mt-lg-2">
-                <p>Logged As: Account analyst</p>
+                <p>Logged User: {{ auth()->user()->position }}</p>
             </div>
 
         </div>
