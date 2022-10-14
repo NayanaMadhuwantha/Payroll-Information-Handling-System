@@ -23,7 +23,14 @@ class LeaveController extends Controller
         $users = User::getAllUsers();
         $remaining_leaves = AvailableLeave::where('user_id',$user_id)->where('no_of_leaves','>',0)->get();
         $approved_leaves = Leave::where('user_id',$user_id)->where('status','=','Approved')->get();
-        $all_leaves = Leave::where('user_id',$user_id)->get();
+
+        if (Auth::user()->position == 'admin'){
+            $all_leaves = Leave::all();
+        }
+        else{
+            $all_leaves = Leave::where('user_id',$user_id)->get();
+        }
+
         return view('pages.leave.index')->with([
             'available_leaves'=>$available_leaves,
             'users'=>$users,

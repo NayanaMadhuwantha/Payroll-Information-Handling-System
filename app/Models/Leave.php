@@ -12,4 +12,8 @@ class Leave extends Model
     public function type(){
         return $this->belongsTo(LeaveType::class,'leave_type_id');
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

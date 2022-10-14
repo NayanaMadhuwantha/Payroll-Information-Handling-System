@@ -188,6 +188,7 @@
                                     <table class="table table-striped custom-table mb-0 datatable">
                                         <thead>
                                             <tr>
+                                                <th>User</th>
                                                 <th>Leave Type</th>
                                                 <th>From</th>
                                                 <th>To</th>
@@ -200,6 +201,7 @@
                                         <tbody>
                                         @foreach($all_leaves as $leave)
                                             <tr>
+                                                <td>{{ $leave->user->username }}</td>
                                                 <td>{{ $leave->type->name }}</td>
                                                 <td>{{ $leave->start_date }}</td>
                                                 <td>{{ $leave->end_date }}</td>
