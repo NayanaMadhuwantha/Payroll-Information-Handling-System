@@ -118,7 +118,7 @@
                         </div>
                     </a>
                 </div>
-                    @if(auth()->user()->position == 'admin')
+                    {{-- @if(auth()->user()->position == 'admin') --}}
                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6">
                     <a href="{{ route('reports') }}">
                         <div class="card dash-widget">
@@ -132,7 +132,7 @@
                         </div>
                     </a>
                 </div>
-                    @endif
+                    {{-- @endif --}}
                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6">
                     <a href="{{ route('employee-profile.allProfiles') }}">
                         <div class="card dash-widget">

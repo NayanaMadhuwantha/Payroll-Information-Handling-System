@@ -127,12 +127,18 @@
                 <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                 <span class="user-img"><img src="{{ asset('images/profiles/avatar-21.jpg') }}" alt="">
                     <span class="status online"></span></span>
-                    <span>Admin</span>
+                    @if(auth()->user())
+                    <span>{{ auth()->user()->username}}</span>
+                    @endif
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{ route('employee-profile.index') }}">My Profile</a>
-                    <a class="dropdown-item" href="{{ route('settings') }}">Settings</a>
 
+                    <a class="dropdown-item" href="{{ route('employee-profile.index') }}">My Profile</a>
+                    @if(auth()->user())
+                    @if(auth()->user()->position == 'admin')
+                    <a class="dropdown-item" href="{{ route('settings') }}">Settings</a>
+                    @endif
+                    @endif
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

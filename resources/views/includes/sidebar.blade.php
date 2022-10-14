@@ -52,11 +52,11 @@
                     </ul>
                 </li> --}}
                 <li><a href="{{ route('month-salary') }}"><i class="la la-bullhorn"></i> <span>Salary</span></a></li>
-                @if(auth()->user()->position == 'admin')
+                {{-- @if(auth()->user()->position == 'admin') --}}
                 <li class="submenu">
                     <a href="{{ route('reports') }}"><i class="la la-briefcase"></i> <span> Reports </span></a>
                 </li>
-                @endif
+                {{-- @endif --}}
             </ul>
         </div>
     </div>
