@@ -322,8 +322,10 @@
         $form.appendTo($('body')).submit();
     };
 
-    var user_element = document.getElementById('user');
-    user_element.addEventListener('input', submit, false);
+    window.addEventListener('load',function(){
+        var user_element = document.getElementById('user');
+        user_element.addEventListener('input', submit, false);
+    });
 
     function handleLeave(leave_id){
         document.getElementById('leave_id_for_submit').value = leave_id;
