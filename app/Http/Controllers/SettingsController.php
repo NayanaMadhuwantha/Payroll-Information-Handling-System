@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\FileHelper;
 use App\Models\Grade;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -69,6 +70,13 @@ class SettingsController extends Controller
         $user->gender = $request->input('gender');
         $user->date_hired = $request->input('date_hired');
         $user->grade_id = $request->input('grade_id');
+
+        $finger_print_file = $request->file('finger_print');
+
+        if ($finger_print_file){
+            $user->finger_print = FileHelper::saveFile($request->finger_print, public_path('finger-prints'));
+        }
+
         $user->save();
 
         $grades = Grade::all();

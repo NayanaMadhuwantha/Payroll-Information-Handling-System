@@ -210,6 +210,13 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-2">Finger print</label>
+                                    <div class="col-md-10">
+                                        <input type="file" class="form-control" name="finger_print">
+                                    </div>
+                                </div>
+
                                 <div class="submit-section">
                                     <button class="btn btn-primary submit-btn">Create User</button>
                                 </div>
