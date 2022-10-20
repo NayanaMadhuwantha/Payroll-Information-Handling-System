@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\AvailableLeave;
 use App\Models\Grade;
+use App\Models\LeaveType;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -65,7 +68,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+
+        $user = User::create([
             'username' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -73,6 +77,18 @@ class RegisterController extends Controller
             'gender' => $data['gender'],
             'grade_id' => $data['grade_id'],
         ]);
+
+        $leave_types = LeaveType::all();
+
+        foreach ($leave_types as $leave_type){
+            $available_leave = new AvailableLeave();
+            $available_leave->user_id = $user->id;
+            $available_leave->leave_type_id = $leave_type->id;
+            $available_leave->no_of_leaves = 10;
+            $available_leave->save();
+        }
+
+        return $user;
     }
 
     public function showRegistrationForm()

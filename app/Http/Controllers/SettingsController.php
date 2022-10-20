@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\FileHelper;
+use App\Models\AvailableLeave;
 use App\Models\Grade;
+use App\Models\LeaveType;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -78,6 +80,16 @@ class SettingsController extends Controller
         }
 
         $user->save();
+
+        $leave_types = LeaveType::all();
+
+        foreach ($leave_types as $leave_type){
+            $available_leave = new AvailableLeave();
+            $available_leave->user_id = $user->id;
+            $available_leave->leave_type_id = $leave_type->id;
+            $available_leave->no_of_leaves = 10;
+            $available_leave->save();
+        }
 
         $grades = Grade::all();
         return view('pages.settings.index')->with([
