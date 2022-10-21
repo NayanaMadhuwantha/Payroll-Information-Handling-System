@@ -261,7 +261,7 @@
     var submit = function(evt) {
         var $form = $('<form action="{{ route('attendance') }}" method="GET">');
         $form.append('@csrf');
-        $form.append('<input name="user_id" value="'+evt.target.value+'" />');
+        $form.append('<input type="hidden" name="user_id" value="'+evt.target.value+'" />');
         $form.appendTo($('body')).submit();
     };
 

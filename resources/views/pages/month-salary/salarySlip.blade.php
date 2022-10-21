@@ -64,9 +64,9 @@
                                     </div>
                                     <div class="col-sm-6 m-b-20">
                                         <div class="invoice-details">
-                                            <h3 class="text-uppercase">Payslip #49029</h3>
+                                            <h3 class="text-uppercase">Payslip #{{$salary->id}}</h3>
                                             <ul class="list-unstyled">
-                                                <li>Salary Month: <span>March, 2019</span></li>
+                                                <li>Salary Month: <span>{{ $month_name }}</span></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -166,8 +166,8 @@
         var $form = $('<form action="{{ route('salarySlip') }}" method="GET">');
         $form.append('@csrf');
 
-        $form.append('<input name="user_id" value="{{ $user->id }}" />');
-        $form.append('<input name="month" value="'+evt.target.value+'" />');
+        $form.append('<input type="hidden" name="user_id" value="{{ $user->id }}" />');
+        $form.append('<input type="hidden" name="month" value="'+evt.target.value+'" />');
         $form.appendTo($('body')).submit();
     };
 
