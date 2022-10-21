@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Grade;
 use App\Models\Salary;
 use App\Models\User;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use NumberFormatter;
 
 class SalaryController extends Controller
 {
@@ -67,7 +69,34 @@ class SalaryController extends Controller
         ]);
     }
 
-    public function salarySlip(){
-        return view('pages.month-salary.salarySlip');
+    public function salarySlip(Request $request){
+        $user_id = $request->input('user_id');
+        $user = User::find($user_id);
+        $month = 1;
+        $month_name = null;
+        $salary_in_words = null;
+
+        if ($request->has('month')){
+            $month = $request->input('month');
+        }
+
+        $salary = Salary::where('user_id',$user_id)->whereMonth('created_at',$month)->first();
+
+        if ($salary) {
+            $dateObj = DateTime::createFromFormat('!m', $month);
+            $month_name = $dateObj->format('F');
+
+            $digit = new NumberFormatter("en", NumberFormatter::SPELLOUT);
+            $salary_in_words = $digit->format($salary->net_salary);
+        }
+
+
+        return view('pages.month-salary.salarySlip')->with([
+            'user'=>$user,
+            'month' => (int)$month,
+            'month_name' => $month_name,
+            'salary_in_words' => $salary_in_words,
+            'salary' => $salary
+        ]);
     }
 }
