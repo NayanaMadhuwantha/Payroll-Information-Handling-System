@@ -99,7 +99,7 @@
 
                         <div class="col-md-8 offset-md-2 mt-lg-3">
 
-                            <form action="{{ route('add.user') }}" method="post">
+                            <form action="{{ route('add.user') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group row mb-2">
                                     <label class="col-form-label col-md-2">User Name</label>
@@ -289,7 +289,7 @@
                                     </div>
                                 </div>
 
-                           
+
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-3">Maximum advance</label>
                                     <div class="col-md-3">
@@ -302,7 +302,7 @@
                                     </div>
                                 </div>
 
-                               
+
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-3">Salary Rate</label>
                                     <div class="col-md-9">

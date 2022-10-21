@@ -34,7 +34,6 @@
                                         <div class="profile-info-left">
                                             <h3 class="user-name m-t-0 mb-0">{{ $user->full_name ?? $user->username }}</h3>
                                             <h6 class="text-muted">{{ $user->position }}</h6>
-                                            <div>Search Employee ID : {{ $user->search_employee_id }}</div>
                                             <div>Employee No : {{ $user->id }}</div>
                                             <div>EPF/ETF No : {{ $user->etf_epf_number }}</div>
                                             <div class="small doj text-muted">Date Hired : {{ $user->date_hired }}</div>
@@ -101,7 +100,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('employee-profile.update',$user->id) }}" method="post">
+                    <form action="{{ route('employee-profile.update',$user->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-12">
@@ -113,12 +112,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Search Employee ID</label>
-                                            <input name="search_employee_id" type="text" class="form-control" value="{{ $user->search_employee_id }}" required>
-                                        </div>
-                                    </div>
+
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Employee No</label>
@@ -217,6 +211,13 @@
                                             <option value="{{ $grade->id }}" {{  !empty($user->grade) ?? ($user->grade->id == $grade->id ? 'selected' : '') }}>{{ $grade->name }}</option>
                                         @endforeach
                                     </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Finger print</label>
+                                    <input type="file" class="form-control" name="finger_print">
                                 </div>
                             </div>
 

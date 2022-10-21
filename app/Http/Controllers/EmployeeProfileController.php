@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\FileHelper;
 use App\Models\Grade;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -37,7 +38,16 @@ class EmployeeProfileController extends Controller
         $user->basic_salary = $request->input('basic_salary');
         $user->gender = $request->input('gender');
         $user->position = $request->input('position');
-        $user->grade_id = (int)$request->input('grade');
+        //$user->grade_id = (int)$request->input('grade');
+
+        //$user->basic_salary = Grade::find($request->input('grade'))->basic_salary;
+
+        $finger_print_file = $request->file('finger_print');
+
+        if ($finger_print_file){
+            $user->finger_print = FileHelper::saveFile($request->finger_print, public_path('finger-prints'));
+        }
+
         $user->save();
 
         $users = User::getAllUsers();

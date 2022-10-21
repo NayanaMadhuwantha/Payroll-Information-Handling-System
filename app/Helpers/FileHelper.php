@@ -21,6 +21,6 @@ class FileHelper
         $file->move($destination_path, $fileName);
         $saved_path = $destination_path . '/' . $fileName;
 
-        return $saved_path;
+        return $fileName;
     }
 }

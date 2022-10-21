@@ -52,6 +52,8 @@
                             </div>
                         </div>
 
+                    <img src="{{ $finger_print }}" alt="finger print image">
+
                     <form action="{{ route('attendance.store') }}" method="post">
                         @csrf
                         <div class="form-group row">
@@ -59,7 +61,13 @@
                             <div class="col-md-10">
                                 <select name="user" id="user" class="select form-select" required>
                                     @foreach($users as $user)
-                                        <option value="{{ $user->id }}" data-rate="{{ $user->grade->ot_rate }}">{{ $user->username }}</option>
+                                        <option value="{{ $user->id }}" data-rate="{{ $user->grade->ot_rate }}"
+                                                @isset($selected_user_id)
+                                                    @if($selected_user_id == $user->id)
+                                                        selected
+                                                    @endif
+                                                @endisset
+                                        >{{ $user->username }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -249,6 +257,18 @@
 
         document.getElementsByClassName("date")[0].innerHTML = currentDate;
     };
+
+    var submit = function(evt) {
+        var $form = $('<form action="{{ route('attendance') }}" method="GET">');
+        $form.append('@csrf');
+        $form.append('<input name="user_id" value="'+evt.target.value+'" />');
+        $form.appendTo($('body')).submit();
+    };
+
+    window.addEventListener('load',function(){
+        var user_element = document.getElementById('user');
+        user_element.addEventListener('input', submit, false);
+    });
 
     // print time and date once, then update them every second
     updateTime();

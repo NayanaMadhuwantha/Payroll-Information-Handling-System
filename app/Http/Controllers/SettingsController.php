@@ -73,6 +73,8 @@ class SettingsController extends Controller
         $user->date_hired = $request->input('date_hired');
         $user->grade_id = $request->input('grade_id');
 
+        $user->basic_salary = Grade::find($request->input('grade_id'))->basic_salary;
+
         $finger_print_file = $request->file('finger_print');
 
         if ($finger_print_file){
