@@ -2,16 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Grade;
 use App\Models\Salary;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SalaryController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+
+        $user_id = Auth::user()->id;
+
+        if ($request->has('user_id')){
+            $user_id = $request->input('user_id');
+        }
+
         $users = User::getAllUsers();
+
+        $grade_id = $users->where('id',$user_id)->first()->grade_id;
+
+        $basic_salary = Grade::find($grade_id)->basic_salary;
+
         return view('pages.month-salary.index')->with([
-            'users' => $users
+            'users' => $users,
+            'selected_user_id'=>$user_id,
+            'basic_salary' =>$basic_salary
         ]);
     }
 

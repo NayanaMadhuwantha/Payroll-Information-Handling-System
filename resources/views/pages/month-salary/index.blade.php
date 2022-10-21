@@ -53,7 +53,7 @@
                         <div class="form-group row mb-30">
                             <label class="col-form-label col-md-4">Employee</label>
                             <div class="col-md-8">
-                                <select name="user" id="user" class="select form-select" required>
+                                <select class="select form-select" name="user" id="user">
                                     @foreach($users as $user)
                                         <option value="{{ $user->id }}"
                                                 data-rate="{{ $user->grade->ot_rate }}"
@@ -67,6 +67,11 @@
                                                 data-maximum-advance="{{ $user->grade->maximum_advance }}"
                                                 data-maximum-loan="{{ $user->grade->maximum_loan }}"
                                                 data-salary-rate="{{ $user->grade->salary_rate }}"
+                                                @isset($selected_user_id)
+                                                @if($selected_user_id == $user->id)
+                                                selected
+                                            @endif
+                                            @endisset
                                         >{{ $user->username }}</option>
                                     @endforeach
                                 </select>
@@ -215,7 +220,7 @@
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Basic Salary (Rs.)</label>
                                     <div class="col-md-2">
-                                        <input type="number" class="form-control" name="basic" id="basic" required>
+                                        <input type="number" class="form-control" value="{{ $basic_salary }}" name="basic" id="basic" disabled required>
                                     </div>
                                     <label class="col-form-label col-md-2">EPF Gross (Rs.)</label>
                                     <div class="col-md-2">
@@ -295,5 +300,17 @@
 
             document.getElementById('total_salary').value = basic + gross_wage + (basic * 23 / 100);
         }
+
+        var submit = function(evt) {
+            var $form = $('<form action="{{ route('month-salary') }}" method="GET">');
+            $form.append('@csrf');
+            $form.append('<input name="user_id" value="'+evt.target.value+'" />');
+            $form.appendTo($('body')).submit();
+        };
+
+        window.addEventListener('load',function(){
+            var user_element = document.getElementById('user');
+            user_element.addEventListener('input', submit, false);
+        });
     </script>
 @endsection

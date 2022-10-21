@@ -74,7 +74,9 @@
                                                 <div class="title">Basic Salary:</div>
                                                 <div class="text">{{ $user->basic_salary ?? "N/A"}}</div>
                                             </li>
-
+                                            <li>
+                                                <a href="{{ route('salarySlip') }}" class="btn btn-success">Salary slip</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>

@@ -11,9 +11,11 @@
                 <li class="menu-title">
                     <span>Employees</span>
                 </li>
+                @if(auth()->user()->position == 'admin')
                 <li class="submenu">
                     <a href="{{ route('employee-profile.allProfiles') }}"><i class="la la-user"></i> <span> Profile </span> </a>
                 </li>
+                @endif
                 <li>
                     <a href="{{ route('leave') }}"><i class="la la-file-text"></i> <span>Leave</span></a>
                 </li>
