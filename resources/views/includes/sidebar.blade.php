@@ -13,7 +13,7 @@
                 </li>
                 @if(auth()->user()->position == 'admin')
                 <li class="submenu">
-                    <a href="{{ route('employee-profile.allProfiles') }}"><i class="la la-user"></i> <span> Profile </span> </a>
+                    <a href="{{ route('employee-profile.allProfiles') }}"><i class="la la-user"></i> <span> Users </span> </a>
                 </li>
                 @endif
                 <li>

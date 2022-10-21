@@ -5,7 +5,7 @@
 
 <div class="page-wrapper">
 
-    <div class="content container-fluid">
+    <div class=" container-fluid">
 
         <div class="page-header">
             <div class="row align-items-center">
@@ -34,7 +34,7 @@
             <div class="tab-pane active" id="aproveadvance" role="tabpanel" aria-labelledby="aproveadvance-tab">
                 <!-- <h4>Expense Approval Settings</h4> -->
 
-                <div class="col-md-8 offset-md-2 mt-lg-5">
+                <div class="col-md-8 offset-md-2 mt-lg-3">
 
                     <div class="page-header">
                         <div class="row">

@@ -4,7 +4,7 @@
 
 <div class="page-wrapper">
 
-    <div class="content container-fluid">
+    <div class=" container-fluid">
 
         <div class="page-header">
             <div class="row align-items-center">
@@ -20,14 +20,14 @@
 
 
         <ul class="nav nav-tabs nav-tabs-bottom align-center" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
+            {{-- <li class="nav-item" role="presentation">
                 <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#deduction1" role="tab" aria-controls="home" aria-selected="true">Deduction I</a>
-            </li>
+            </li> --}}
             <!-- <li class="nav-item" role="presentation">
                 <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#deduction2" role="tab" aria-controls="profile" aria-selected="false">Deduction II</a>
             </li> -->
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#abesent" role="tab" aria-controls="profile" aria-selected="false">Absent</a>
+                <a class="nav-link active" id="profile-tab" data-bs-toggle="tab" href="#abesent" role="tab" aria-controls="profile" aria-selected="false">Absent</a>
             </li>
             <li class="nav-item" role="presentation">
                 <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#food" role="tab" aria-controls="profile" aria-selected="false">Food</a>
@@ -39,8 +39,8 @@
 
         <div class="tab-content">
 
-            <div class="tab-pane active" id="deduction1" role="tabpanel" aria-labelledby="deduction1-tab">
-                <!-- <h4>Expense Approval Settings</h4> -->
+            {{-- <div class="tab-pane active" id="deduction1" role="tabpanel" aria-labelledby="deduction1-tab">
+              
 
                 <div class="col-md-10 offset-md-1 mt-lg-5">
 
@@ -143,11 +143,11 @@
                             </div>
                         </div>
 
-                        <p>Logged As: Account analyst</p>
+                         <p>Logged User: {{ auth()->user()->position }}</p>
 
                     </form>
                 </div>
-            </div>
+            </div> --}}
 
 
 
@@ -247,10 +247,10 @@
 
 
 
-            <div class="tab-pane" id="abesent" role="tabpane3" aria-labelledby="abesent-tab">
+            <div class="tab-pane active" id="abesent" role="tabpane3" aria-labelledby="abesent-tab">
                 <!-- <h4>Expense Approval Settings</h4> -->
 
-                <div class="col-md-8 offset-md-2 mt-lg-5">
+                <div class="col-md-8 offset-md-2 mt-lg-3">
 
                     <!-- <div class="page-header">
                         <div class="row">
@@ -333,6 +333,8 @@
                             <button class="btn btn-danger submit-btn">Clear</button>
                         </div>
 
+                        <p>Logged User: {{ auth()->user()->position }}</p>
+
                     </form>
                 </div>
             </div>
@@ -345,11 +347,11 @@
 
 
             <div class="tab-pane" id="food" role="tabpane4" aria-labelledby="food-tab">
-                <div class="col-md-10 offset-md-1 mt-lg-5">
+                <div class="col-md-10 offset-md-1 mt-lg-3">
                     <div class="page-header">
                         <div class="row">
                             <div class="col-sm-12">
-                                <h3 class="page-title">Food Deduction Form</h3>
+                                <h3 class="page-title mb-lg-2">Food Deduction Form</h3>
                             </div>
                         </div>
                     </div>
@@ -444,7 +446,7 @@
                             </div>
                         </div>
 
-                        <p>Logged As: Account analyst</p>
+                        <p>Logged User: {{ auth()->user()->position }}</p>
 
                     </form>
                 </div>

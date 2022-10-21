@@ -112,23 +112,23 @@
 
             <li class="nav-item">
                 <div class="top-nav-search">
-                    <a href="javascript:void(0);" class="responsive-search">
+                    {{-- <a href="javascript:void(0);" class="responsive-search">
                         <i class="fa fa-search"></i>
                     </a>
                     <form action="search.html">
                         <input class="form-control" type="text" placeholder="Search here">
                         <button class="btn" type="submit"><i class="fa fa-search"></i></button>
-                    </form>
+                    </form> --}}
                 </div>
             </li>
 
 
             <li class="nav-item dropdown has-arrow main-drop">
                 <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-                <span class="user-img"><img src="{{ asset('images/profiles/avatar-21.jpg') }}" alt="">
-                    <span class="status online"></span></span>
+                {{-- <span class="user-img"><img src="{{ asset('images/profiles/avatar-21.jpg') }}" alt="">
+                    <span class="status online"></span></span> --}}
                     @if(auth()->user())
-                    <span>{{ auth()->user()->username}}</span>
+                    <span style="padding-right: 10px;background-color: black;padding: 10px;border-radius: 5px;">{{ auth()->user()->username}}</span>
                     @endif
                 </a>
                 <div class="dropdown-menu">

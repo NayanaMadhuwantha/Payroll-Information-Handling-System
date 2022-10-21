@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="page-wrapper">
-    <div class="content container-fluid">
+    <div class=" container-fluid">
         <div class="row">
             <div class="col-md-12">
 
@@ -20,7 +20,7 @@
                 <div class="page-header mb-2">
                     <div class="row">
                         <div class="col-sm-12">
-                            <!-- <h3 class="page-title">Approval Settings</h3> -->
+                            <h3 class="page-title">Settings</h3>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="admin-dashboard.html">Dashboard</a></li>
                                 <li class="breadcrumb-item active">Settings Page</li>
@@ -47,7 +47,7 @@
                     <div class="tab-pane active" id="updatepw" role="tabpanel" aria-labelledby="updatepw-tab">
                         <!-- <h4>Expense Approval Settings</h4> -->
 
-                        <div class="col-md-6 offset-md-3 mt-lg-5">
+                        <div class="col-md-6 offset-md-3 mt-lg-3">
 
                             <!-- <div class="page-header">
                                 <div class="row">
@@ -97,48 +97,42 @@
 
                     <div class="tab-pane" id="adduser" role="tabpanel" aria-labelledby="adduser-tab">
 
-                        <div class="col-md-6 offset-md-3 mt-lg-5">
+                        <div class="col-md-8 offset-md-2 mt-lg-3">
 
                             <form action="{{ route('add.user') }}" method="post">
                                 @csrf
-                                <div class="form-group row">
+                                <div class="form-group row mb-2">
                                     <label class="col-form-label col-md-2">User Name</label>
-                                    <div class="col-md-10">
+                                    <div class="col-md-4">
                                         <input type="text" class="form-control" name="username" required>
                                     </div>
-                                </div>
-
-                                <div class="form-group row">
                                     <label class="col-form-label col-md-2">Full Name</label>
-                                    <div class="col-md-10">
+                                    <div class="col-md-4">
                                         <input type="text" class="form-control" name="full_name" required>
                                     </div>
                                 </div>
 
-                                <div class="form-group row">
+                                <div class="form-group row mb-2">
                                     <label class="col-form-label col-md-2">Name With Initials</label>
-                                    <div class="col-md-10">
+                                    <div class="col-md-4">
                                         <input type="text" class="form-control" name="name_with_initials">
                                     </div>
-                                </div>
 
-                                <div class="form-group row">
                                     <label class="col-form-label col-md-2">Email</label>
-                                    <div class="col-md-10">
+                                    <div class="col-md-4">
                                         <input type="email" class="form-control" name="email" required>
                                     </div>
                                 </div>
 
-                                <div class="form-group row">
+
+                                <div class="form-group row mb-2">
                                     <label class="col-form-label col-md-2">Password</label>
-                                    <div class="col-md-10">
+                                    <div class="col-md-4">
                                         <input type="password" class="form-control" name="password" required>
                                     </div>
-                                </div>
 
-                                <div class="form-group row">
                                     <label class="col-form-label col-md-2">Position</label>
-                                    <div class="col-md-10">
+                                    <div class="col-md-4">
                                         <select name="position" class="form-select" required>
                                             <option value="Web Developer">Web Developer</option>
                                             <option value="IT Manager">IT Manager</option>
@@ -147,75 +141,71 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group row">
+
+                                <div class="form-group row mb-2">
                                     <label class="col-form-label col-md-2">ETF EPF Number</label>
-                                    <div class="col-md-10">
+                                    <div class="col-md-4">
                                         <input type="text" class="form-control" name="etf_epf_number" required>
                                     </div>
-                                </div>
 
-                                <div class="form-group row">
                                     <label class="col-form-label col-md-2">Date of birth</label>
-                                    <div class="col-md-10">
+                                    <div class="col-md-4">
                                         <input type="date" class="form-control" name="date_of_birth" required>
                                     </div>
                                 </div>
 
-                                <div class="form-group row">
+
+                                <div class="form-group row mb-2">
                                     <label class="col-form-label col-md-2">Contact</label>
-                                    <div class="col-md-10">
+                                    <div class="col-md-4">
                                         <input type="number" class="form-control" name="contact">
+                                    </div>
+
+                                    <label class="col-form-label col-md-2">NIC number</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" name="nic_number" required>
                                     </div>
                                 </div>
 
-                                <div class="form-group row">
+                                <div class="form-group row mb-2">
                                     <label class="col-form-label col-md-2">Address</label>
                                     <div class="col-md-10">
                                         <input type="text" class="form-control" name="address">
                                     </div>
                                 </div>
 
-                                <div class="form-group row">
-                                    <label class="col-form-label col-md-2">NIC number</label>
-                                    <div class="col-md-10">
-                                        <input type="text" class="form-control" name="nic_number" required>
-                                    </div>
-                                </div>
 
-                                <div class="form-group row">
+                                <div class="form-group row mb-2">
                                     <label class="col-form-label col-md-2">Gender</label>
-                                    <div class="col-md-10">
+                                    <div class="col-md-4">
                                         <select name="gender" class="form-select" required>
                                             <option value="male">Male</option>
                                             <option value="female">Female</option>
                                         </select>
                                     </div>
-                                </div>
 
-                                <div class="form-group row">
                                     <label class="col-form-label col-md-2">Date hired</label>
-                                    <div class="col-md-10">
+                                    <div class="col-md-4">
                                         <input type="date" class="form-control" name="date_hired">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Grade</label>
-                                    <div class="col-md-10">
+                                    <div class="col-md-4">
                                         <select name="grade_id" class="form-select">
                                             @foreach($grades as $grade)
                                                 <option value="{{ $grade->id }}">{{ $grade->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
-                                </div>
 
-                                <div class="form-group row">
                                     <label class="col-form-label col-md-2">Finger print</label>
-                                    <div class="col-md-10">
+                                    <div class="col-md-4">
                                         <input type="file" class="form-control" name="finger_print">
                                     </div>
                                 </div>
+
 
                                 <div class="submit-section">
                                     <button class="btn btn-primary submit-btn">Create User</button>
@@ -230,13 +220,13 @@
 
 
                     <div class="tab-pane" id="rates" role="tabpanel" aria-labelledby="rates-tab">
-                        <div class="col-md-6 offset-md-3 mt-lg-5">
+                        <div class="col-md-8 offset-md-2 mt-lg-5">
 
                             <form action="{{ route('update.grades') }}" method="post">
                                 @csrf
-                                <div class="form-group row">
+                                <div class="form-group row mb-1">
                                     <label class="col-form-label col-md-3">Grade</label>
-                                    <div class="col-md-9">
+                                    <div class="col-md-3">
                                         <select name="grade_id" id="grade" class="form-select" required>
                                             @foreach($grades as $grade)
                                                 <option value="{{ $grade->id }}"
@@ -254,63 +244,67 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                </div>
-                                <div class="form-group row">
+
                                     <label class="col-form-label col-md-3">Salary Rate (Per Day)</label>
-                                    <div class="col-md-9">
+                                    <div class="col-md-3">
                                         <input type="number" id="per_day_salary_rate" value="{{ $grades->first()->per_day_salary_rate }}" class="form-control" name="per_day_salary_rate" required>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+
+                                <div class="form-group row mb-2">
                                     <label class="col-form-label col-md-3">EPF 8% Rate</label>
-                                    <div class="col-md-9">
+                                    <div class="col-md-3">
                                         <input type="number" id="epf_8_rate" value="{{ $grades->first()->epf_8_rate }}" class="form-control" name="epf_8_rate" required>
                                     </div>
-                                </div>
-                                <div class="form-group row">
+
                                     <label class="col-form-label col-md-3">EPF 12% Rate</label>
-                                    <div class="col-md-9">
+                                    <div class="col-md-3">
                                         <input type="number" id="epf_12_rate" value="{{ $grades->first()->epf_12_rate }}" class="form-control" name="epf_12_rate" required>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+
+
+                                <div class="form-group row mb-2">
                                     <label class="col-form-label col-md-3">ETF 3% Rate</label>
-                                    <div class="col-md-9">
+                                    <div class="col-md-3">
                                         <input type="number" id="etf_3_rate" value="{{ $grades->first()->etf_3_rate }}" class="form-control" name="etf_3_rate" required>
                                     </div>
-                                </div>
-                                <div class="form-group row">
+
                                     <label class="col-form-label col-md-3">OT Rate</label>
-                                    <div class="col-md-9">
+                                    <div class="col-md-3">
                                         <input type="number" id="ot_rate" value="{{ $grades->first()->ot_rate }}" class="form-control" name="ot_rate" required>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+
+
+                                <div class="form-group row mb-2">
                                     <label class="col-form-label col-md-3">Attendance allowance</label>
-                                    <div class="col-md-9">
+                                    <div class="col-md-3">
                                         <input type="number" id="attendance_allowance" value="{{ $grades->first()->attendance_allowance }}" class="form-control" name="attendance_allowance">
                                     </div>
-                                </div>
-                                <div class="form-group row">
+
                                     <label class="col-form-label col-md-3">Basic salary</label>
-                                    <div class="col-md-9">
+                                    <div class="col-md-3">
                                         <input type="number" id="basic_salary" value="{{ $grades->first()->basic_salary }}" class="form-control" name="basic_salary">
                                     </div>
                                 </div>
+
+                           
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-3">Maximum advance</label>
-                                    <div class="col-md-9">
+                                    <div class="col-md-3">
                                         <input type="number" id="maximum_advance" value="{{ $grades->first()->maximum_advance }}" class="form-control" name="maximum_advance">
                                     </div>
-                                </div>
-                                <div class="form-group row">
+
                                     <label class="col-form-label col-md-3">Maximum loan</label>
-                                    <div class="col-md-9">
+                                    <div class="col-md-3">
                                         <input type="number" id="maximum_loan" value="{{ $grades->first()->maximum_loan }}" class="form-control" name="maximum_loan">
                                     </div>
                                 </div>
+
+                               
                                 <div class="form-group row">
-                                    <label class="col-form-label col-md-3">Salary rate</label>
+                                    <label class="col-form-label col-md-3">Salary Rate</label>
                                     <div class="col-md-9">
                                         <input type="number" id="salary_rate" value="{{ $grades->first()->salary_rate }}" class="form-control" name="salary_rate">
                                     </div>

@@ -4,7 +4,7 @@
 
 <div class="page-wrapper" id="allowance">
 
-    <div class="content container-fluid">
+    <div class=" container-fluid">
 
         <div class="page-header">
             <div class="row align-items-center">
@@ -110,7 +110,7 @@
                             <button class="btn btn-danger submit-btn">Clear</button>
                         </div>
 
-                        <p>Logged As: Account analyst</p>
+                        <p>Logged User: {{ auth()->user()->position }}</p>
 
                     </form>
                 </div>
@@ -195,7 +195,7 @@
                             <button class="btn btn-danger submit-btn">Clear</button>
                         </div>
 
-                        <p>Logged As: Account analyst</p>
+                        <p>Logged User: {{ auth()->user()->position }}</p>
 
                     </form>
                 </div>
@@ -320,7 +320,7 @@
 
                         <div class="form-group row offset-md-4">
                             <label class="col-form-label col-md-1 ">Year</label>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <input type="text" class="form-control">
                             </div>
                         </div>

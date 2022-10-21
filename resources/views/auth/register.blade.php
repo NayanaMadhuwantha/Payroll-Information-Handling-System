@@ -18,7 +18,7 @@
 
     </div>
 
-    <div class="main-wrapper" style=" position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    <div class="main-wrapper" style=" position: absolute; top: 50%; left: 50%; transform: translate(-50%, -43%);">
         <div class="account-content">
             <div class="container">
                 {{-- <div class="card-header">{{ __('Register') }}</div> --}}
