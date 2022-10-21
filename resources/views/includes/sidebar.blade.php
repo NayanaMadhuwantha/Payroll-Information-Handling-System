@@ -43,7 +43,7 @@
                 <li>
                     <a href="{{ route('settings') }}"><i class="la la-cog"></i> <span>Settings</span></a>
                 </li>
-                @endif
+
                {{-- <li class="submenu">
                     <a href="#"><i class="la la-key"></i> <span> Authentication </span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
@@ -54,6 +54,7 @@
                     </ul>
                 </li> --}}
                 <li><a href="{{ route('month-salary') }}"><i class="la la-bullhorn"></i> <span>Salary</span></a></li>
+                @endif
                 {{-- @if(auth()->user()->position == 'admin') --}}
                 <li class="submenu">
                     <a href="{{ route('reports') }}"><i class="la la-briefcase"></i> <span> Reports </span></a>
