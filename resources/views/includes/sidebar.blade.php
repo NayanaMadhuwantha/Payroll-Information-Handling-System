@@ -29,10 +29,11 @@
                 <li class="submenu">
                     <a href="{{ route('advance') }}"><i class="la la-money"></i> <span> Advance </span></a>
                 </li>
-                @endif
+               
                 <li class="submenu">
                     <a href="{{ route('loan') }}"><i class="la la-money"></i> <span> Loans </span></a>
                 </li>
+                @endif
                 <li>
                     <a href="{{ route('attendance') }}"><i class="la la-users"></i> <span>Attendance</span></a>
                 </li>

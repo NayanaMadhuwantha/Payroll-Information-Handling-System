@@ -79,6 +79,7 @@
                 </div>
                 @endif
 
+                @if(auth()->user()->position == 'admin')
                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6">
                     <a href="{{ route('month-salary') }}">
                         <div class="card dash-widget">
@@ -92,6 +93,23 @@
                         </div>
                     </a>
                 </div>
+                @endif
+
+                
+                {{-- <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6">
+                    <a href="{{ route('salarySlip') }}">
+                        <div class="card dash-widget">
+                            <div class="card-body p-4">
+                                <span class="dash-widget-icon"><i class="fa fa-user"></i></span>
+                                <div class="dash-widget-info">
+                                    <h3 class="text-black" style="font-size: x-large;">Month Salary</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div> --}}
+               
+
                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6">
                     <a href="{{ route('leave') }}">
                         <div class="card dash-widget">
@@ -105,6 +123,8 @@
                         </div>
                     </a>
                 </div>
+
+                @if(auth()->user()->position == 'admin')
                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6">
                     <a href="{{ route('loan') }}">
                         <div class="card dash-widget">
@@ -118,6 +138,7 @@
                         </div>
                     </a>
                 </div>
+                @endif
                     {{-- @if(auth()->user()->position == 'admin') --}}
                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6">
                     <a href="{{ route('reports') }}">
@@ -133,6 +154,8 @@
                     </a>
                 </div>
                     {{-- @endif --}}
+
+                    @if(auth()->user()->position == 'admin')
                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6">
                     <a href="{{ route('employee-profile.allProfiles') }}">
                         <div class="card dash-widget">
@@ -146,6 +169,7 @@
                         </div>
                     </a>
                 </div>
+                @endif
 
                     @if(auth()->user()->position == 'admin')
                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6">

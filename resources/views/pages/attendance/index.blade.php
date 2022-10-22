@@ -42,6 +42,7 @@
                         </div>
                     </div> -->
                         <div class="align-center">
+                            <img src="{{ $finger_print }}" width="100px" alt="finger print image">
                             <div class="time" >
                                 <div class="time-wrapper">
                                     <span class="hms"></span>
@@ -50,9 +51,16 @@
                                     <span class="date"></span>
                                 </div>
                             </div>
+                        
                         </div>
 
-                    <img src="{{ $finger_print }}" alt="finger print image">
+                        {{-- <div class="row">
+                            <label class="col-form-label col-md-2">Finger Print</label>
+                            <div class="col-md-4">
+                                <img src="{{ $finger_print }}" width="100px" alt="finger print image">
+                            </div>
+                        </div> --}}
+                    {{-- <img src="{{ $finger_print }}" width="100px" alt="finger print image"> --}}
 
                     <form action="{{ route('attendance.store') }}" method="post">
                         @csrf

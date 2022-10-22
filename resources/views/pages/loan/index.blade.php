@@ -21,7 +21,7 @@
 
                 <ul class="nav nav-tabs nav-tabs-bottom align-center" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#aproveloan" role="tab" aria-controls="home" aria-selected="true">Approve Loan</a>
+                        <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#aproveloan" role="tab" aria-controls="home" aria-selected="true">Handle Loans</a>
                     </li>
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#loanreport" role="tab" aria-controls="profile" aria-selected="false">Report</a>
@@ -89,7 +89,7 @@
 
 
                                 <div class="submit-section mt-2 mb-4">
-                                    <button class="btn btn-success submit-btn">Apply</button>
+                                    <button class="btn btn-success submit-btn">Aproved Loan</button>
                                     <button class="btn btn-danger submit-btn">Cancel</button>
                                 </div>
 
