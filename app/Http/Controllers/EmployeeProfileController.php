@@ -37,10 +37,10 @@ class EmployeeProfileController extends Controller
         $user->date_hired = $request->input('date_hired');
         $user->basic_salary = $request->input('basic_salary');
         $user->gender = $request->input('gender');
-        $user->position = $request->input('position');
-        //$user->grade_id = (int)$request->input('grade');
+        //$user->position = $request->input('position');
+        $user->grade_id = (int)$request->input('grade');
 
-        //$user->basic_salary = Grade::find($request->input('grade'))->basic_salary;
+        $user->basic_salary = Grade::find($request->input('grade'))->basic_salary;
 
         $finger_print_file = $request->file('finger_print');
 
