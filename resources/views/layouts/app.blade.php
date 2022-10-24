@@ -89,7 +89,7 @@
     <div class="header">
 
         <div class="header-left">
-            <a href="admin-dashboard.html" class="logo">
+            <a href="{{ route('dashboard') }}" class="logo">
                 <img src="{{ asset('images/logo.png') }}" width="40" height="40" alt="">
             </a>
         </div>
