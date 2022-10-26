@@ -328,7 +328,7 @@ class SalaryController extends Controller
         $month_name = $dateObj->format('F');
 
         $digit = new NumberFormatter("en", NumberFormatter::SPELLOUT);
-        $salary_in_words = $digit->format($salary->net_salary);
+        $salary_in_words = $digit->format(round($salary->net_salary, 2));
 
         $data = [
             'user'=>$user,
