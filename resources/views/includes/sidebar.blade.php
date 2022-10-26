@@ -54,9 +54,12 @@
                         <li><a href="error-500.html">500 Error </a></li>
                     </ul>
                 </li> --}}
-                <li><a href="{{ route('month-salary') }}"><i class="la la-bullhorn"></i> <span>Salary</span></a></li>
+                <li><a href="{{ route('month-salary') }}"><i class="la la-bullhorn"></i> <span>User Salary</span></a></li>
                 @endif
                 {{-- @if(auth()->user()->position == 'admin') --}}
+                <li class="submenu">
+                    <a href="#"><i class="la la-money"></i> <span>Month Salary</span></a>
+                </li>
                 <li class="submenu">
                     <a href="{{ route('reports') }}"><i class="la la-briefcase"></i> <span> Reports </span></a>
                 </li>

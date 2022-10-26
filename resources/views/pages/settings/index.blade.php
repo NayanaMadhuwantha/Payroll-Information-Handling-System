@@ -102,33 +102,35 @@
                             <form action="{{ route('add.user') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group row mb-2">
-                                    <label class="col-form-label col-md-2">User Name</label>
-                                    <div class="col-md-4">
-                                        <input type="text" class="form-control" name="username" required>
-                                    </div>
                                     <label class="col-form-label col-md-2">Full Name</label>
                                     <div class="col-md-4">
                                         <input type="text" class="form-control" name="full_name" required>
                                     </div>
-                                </div>
 
-                                <div class="form-group row mb-2">
                                     <label class="col-form-label col-md-2">Name With Initials</label>
                                     <div class="col-md-4">
                                         <input type="text" class="form-control" name="name_with_initials">
                                     </div>
+                                </div>
 
-                                    <label class="col-form-label col-md-2">Email</label>
+                                <div class="form-group row mb-2">
+                                    
+                                    <label class="col-form-label col-md-2">User Name</label>
                                     <div class="col-md-4">
-                                        <input type="email" class="form-control" name="email" required>
+                                        <input type="text" class="form-control" name="username" required>
+                                    </div>
+                                   
+                                    <label class="col-form-label col-md-2">Password</label>
+                                    <div class="col-md-4">
+                                        <input type="password" class="form-control" name="password" required>
                                     </div>
                                 </div>
 
 
                                 <div class="form-group row mb-2">
-                                    <label class="col-form-label col-md-2">Password</label>
+                                    <label class="col-form-label col-md-2">Email</label>
                                     <div class="col-md-4">
-                                        <input type="password" class="form-control" name="password" required>
+                                        <input type="email" class="form-control" name="email" required>
                                     </div>
 
                                     <label class="col-form-label col-md-2">Position</label>
