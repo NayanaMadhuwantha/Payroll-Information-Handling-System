@@ -42,14 +42,10 @@
             </form> -->
 
 
-            <form action="{{ route('month-salary.store') }}" method="post">
+            <form action="{{ route('month-salary.store') }}" method="POST">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
-                        <!-- <div class="card profile-box flex-fill"> -->
-                        <!-- <div class="card-body"> -->
-
-
                         <div class="form-group row mb-30">
                             <label class="col-form-label col-md-4">Employee</label>
                             <div class="col-md-8">
@@ -70,8 +66,8 @@
                                                 @isset($selected_user_id)
                                                 @if($selected_user_id == $user->id)
                                                 selected
-                                            @endif
-                                            @endisset
+                                                @endif
+                                                @endisset
                                         >{{ $user->username }}</option>
                                     @endforeach
                                 </select>
@@ -79,28 +75,30 @@
                         </div>
                         <div class="form-group row">
                             <label class="col-form-label col-md-4">Month</label>
-                            <div class="col-md-8">
-                                <select name="month" class="select form-select" required>
-                                    <option value="1">January</option>
-                                    <option value="2">February</option>
-                                    <option value="3">March</option>
-                                    <option value="4">April</option>
-                                    <option value="5">May</option>
-                                    <option value="6">June</option>
-                                    <option value="7">July</option>
-                                    <option value="8">August</option>
-                                    <option value="9">September</option>
-                                    <option value="10">October</option>
-                                    <option value="11">November</option>
-                                    <option value="12">December</option>
+                            <div class="col-md-3">
+                                <select name="month" class="select form-select" id="month" required>
+                                    <option value="1" @if($month == 1) selected @endif>January</option>
+                                    <option value="2" @if($month == 2) selected @endif>February</option>
+                                    <option value="3" @if($month == 3) selected @endif>March</option>
+                                    <option value="4" @if($month == 4) selected @endif>April</option>
+                                    <option value="5" @if($month == 5) selected @endif>May</option>
+                                    <option value="6" @if($month == 6) selected @endif>June</option>
+                                    <option value="7" @if($month == 7) selected @endif>July</option>
+                                    <option value="8" @if($month == 8) selected @endif>August</option>
+                                    <option value="9" @if($month == 9) selected @endif>September</option>
+                                    <option value="10" @if($month == 10) selected @endif>October</option>
+                                    <option value="11" @if($month == 11) selected @endif>November</option>
+                                    <option value="12" @if($month == 12) selected @endif>December</option>
                                 </select>
                             </div>
-
                         </div>
 
-
-                        <!-- </div> -->
-                        <!-- </div> -->
+                        <div class="form-group row">
+                            <label class="col-form-label col-md-4">Calculate all</label>
+                            <div class="col-md-3">
+                                <input type="checkbox" name="calculate_all">
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-6 d-flex">
                         <div class="card profile-box flex-fill">
@@ -112,20 +110,17 @@
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">EPF 8% (Rs.)</label>
                                     <div class="col-md-4">
-                                        <input type="number" class="form-control" name="epf_8" id="epf_8" disabled
-                                               required>
+                                        <input type="number" class="form-control" name="epf_8" id="epf_8" disabled required>
                                     </div>
                                     <label class="col-form-label col-md-2">EPF 12% (Rs.)</label>
                                     <div class="col-md-4">
-                                        <input type="number" class="form-control" name="epf_12" id="epf_12" disabled
-                                               required>
+                                        <input type="number" class="form-control" name="epf_12" id="epf_12" disabled required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">ETF 3% (Rs.)</label>
                                     <div class="col-md-4">
-                                        <input type="number" class="form-control" name="epf_3" id="epf_3" disabled
-                                               required>
+                                        <input type="number" class="form-control" name="epf_3" id="epf_3" disabled required>
                                     </div>
                                 </div>
 
@@ -147,25 +142,21 @@
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Attendance Allowance (Rs.)</label>
                                     <div class="col-md-4">
-                                        <input type="number" class="form-control" name="attendance_allowance"
-                                               id="attendance_allowance" required>
+                                        <input type="number" class="form-control" name="attendance_allowance" id="attendance_allowance" value="{{ $attendance_allowance }}" required>
                                     </div>
                                     <label class="col-form-label col-md-2">Other Allowance (Rs.)</label>
                                     <div class="col-md-4">
-                                        <input type="number" class="form-control" name="other_allowance"
-                                               id="other_allowance" required>
+                                        <input type="number" class="form-control" name="other_allowance" id="other_allowance" value="{{ $other_allowance }}" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Normal OT Amount(Rs.)</label>
                                     <div class="col-md-4">
-                                        <input type="number" class="form-control" name="normal_ot" id="normal_ot"
-                                               required>
+                                        <input type="number" class="form-control" name="normal_ot" id="normal_ot" value="{{ $normal_ot_amount }}" required>
                                     </div>
                                     <label class="col-form-label col-md-2">Double OT Amount(Rs.)</label>
                                     <div class="col-md-4">
-                                        <input type="number" class="form-control" name="double_ot" id="double_ot"
-                                               required>
+                                        <input type="number" class="form-control" name="double_ot" id="double_ot" value="{{ $double_ot_amount }}" required>
                                     </div>
                                 </div>
 
@@ -189,18 +180,17 @@
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">No pay (Rs.)</label>
                                     <div class="col-md-4">
-                                        <input type="number" class="form-control" name="no_pay" id="no_pay" required>
+                                        <input type="number" class="form-control" name="no_pay" id="no_pay" value="{{ $nopay }}" required>
                                     </div>
                                     <label class="col-form-label col-md-2">Other Deduction (Rs.)</label>
                                     <div class="col-md-4">
-                                        <input type="number" class="form-control" name="other_deductions"
-                                               id="other_deductions" required>
+                                        <input type="number" class="form-control" name="other_deductions" value="{{ $welfare }}" id="other_deductions" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Walfair (Rs.)</label>
                                     <div class="col-md-4">
-                                        <input type="number" class="form-control" name="welfare" id="welfare" required>
+                                        <input type="number" class="form-control" name="welfare" id="welfare" value="{{ $other }}" required>
                                     </div>
                                 </div>
 
@@ -224,25 +214,21 @@
                                     </div>
                                     <label class="col-form-label col-md-2">EPF Gross (Rs.)</label>
                                     <div class="col-md-2">
-                                        <input type="number" class="form-control" name="epf_gross" id="epf_gross"
-                                               disabled required>
+                                        <input type="number" step="0.001" class="form-control" name="epf_gross" id="epf_gross" required>
                                     </div>
                                     <label class="col-form-label col-md-2">Gross Wage (Rs.)</label>
                                     <div class="col-md-2">
-                                        <input type="number" class="form-control" name="gross_wage" id="gross_wage"
-                                               disabled required>
+                                        <input type="number" step="0.001" class="form-control" name="gross_wage" id="gross_wage" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-2">Net Salary (Rs.)</label>
                                     <div class="col-md-4">
-                                        <input type="number" class="form-control" name="net_salary" id="net_salary"
-                                               disabled required>
+                                        <input type="number" step="0.001" class="form-control" name="net_salary" id="net_salary" required>
                                     </div>
                                     <label class="col-form-label col-md-2">Total Salary (Rs.)</label>
                                     <div class="col-md-4">
-                                        <input type="number" class="form-control" name="total_salary" id="total_salary"
-                                               disabled required>
+                                        <input type="number" step="0.001" class="form-control" name="total_salary" id="total_salary" required>
                                     </div>
                                 </div>
 
@@ -257,8 +243,8 @@
                     <div class="submit-section mt-2 mb-4">
                         <a class="btn btn-info submit-btn" id="calculate" onclick="calculate()">Calculate</a>
                         <button type="submit" class="btn btn-success submit-btn">Save</button>
-                        <button class="btn btn-success submit-btn">Generate Slip</button>
-                        <button class="btn btn-danger submit-btn">Clear</button>
+<!--                        <button class="btn btn-success submit-btn">Generate Slip</button>
+                        <button class="btn btn-danger submit-btn">Clear</button>-->
                     </div>
                     <p>Logged As: Account analyst</p>
                 </div>
@@ -305,12 +291,28 @@
             var $form = $('<form action="{{ route('month-salary') }}" method="GET">');
             $form.append('@csrf');
             $form.append('<input name="user_id" value="'+evt.target.value+'" />');
+            $form.append('<input type="hidden" name="month" value="{{ $month }}" />');
             $form.appendTo($('body')).submit();
         };
 
         window.addEventListener('load',function(){
             var user_element = document.getElementById('user');
             user_element.addEventListener('input', submit, false);
+        });
+
+
+        var submitMonth = function(evt) {
+            var $form = $('<form action="{{ route('month-salary') }}" method="GET">');
+            $form.append('@csrf');
+
+            $form.append('<input type="hidden" name="user_id" value="{{ $selected_user_id }}" />');
+            $form.append('<input type="hidden" name="month" value="'+evt.target.value+'" />');
+            $form.appendTo($('body')).submit();
+        };
+
+        window.addEventListener('load',function(){
+            var month_element = document.getElementById('month');
+            month_element.addEventListener('input', submitMonth, false);
         });
     </script>
 @endsection

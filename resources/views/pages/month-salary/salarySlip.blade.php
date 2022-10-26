@@ -18,9 +18,9 @@
                         </div>
                         <div class="col-auto float-end ms-auto">
                             <div class="btn-group btn-group-sm">
-                                <button class="btn btn-white">CSV</button>
-                                <button class="btn btn-white">PDF</button>
-                                <button class="btn btn-white"><i class="fa fa-print fa-lg"></i> Print</button>
+                                @isset($month_name)
+                                    <button class="btn btn-white" onclick="downloadSlip()"><i class="fa fa-print fa-lg"></i> Print</button>
+                                @endisset
                             </div>
                         </div>
                     </div>
@@ -175,5 +175,16 @@
         var month_element = document.getElementById('month');
         month_element.addEventListener('input', submit, false);
     });
+
+    function downloadSlip(){
+        var month_element = document.getElementById('month');
+
+        var $form = $('<form action="{{ route('salarySlip.download') }}" method="GET">');
+        $form.append('@csrf');
+
+        $form.append('<input type="hidden" name="user_id" value="{{ $user->id }}" />');
+        $form.append('<input type="hidden" name="month" value="'+month_element.value+'" />');
+        $form.appendTo($('body')).submit();
+    }
 </script>
 @endsection

@@ -1,0 +1,18 @@
+{
+    "material icons": {
+        "normal": "material_icons_normal_aab50d0343deba66592b667be33f166d"
+    },
+    "nunito": {
+        "normal": "nunito_normal_586f3f8a461df5c8635a870033365d5e"
+    },
+    "fontawesome": {
+        "normal": "fontawesome_normal_63487d12182264c2ba0723f02fb07795"
+    },
+    "line awesome brands": {
+        "normal": "line_awesome_brands_normal_90fa6e572c2cd6c378a98c73ad76febf"
+    },
+    "line awesome free": {
+        "normal": "C:\\xampp\\htdocs\\University-projects\\Payroll-Information-Handling-System\\storage\\fonts\/line_awesome_free_normal_4344f3d092dc7bc4e5da15620379e7c1",
+        "900": "line_awesome_free_900_d7ad832202c09ecb6645a6ac031ebc00"
+    }
+}

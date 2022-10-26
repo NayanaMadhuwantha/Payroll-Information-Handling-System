@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/month-salary', [App\Http\Controllers\SalaryController::class, 'index'])->name('month-salary');
     Route::post('/month-salary', [App\Http\Controllers\SalaryController::class, 'store'])->name('month-salary.store');
     Route::get('/salary-slip', [App\Http\Controllers\SalaryController::class, 'salarySlip'])->name('salarySlip');
+    Route::get('/download-salary-slip', [App\Http\Controllers\SalaryController::class, 'downloadSalarySlip'])->name('salarySlip.download');
 
     Route::get('/employee-profile', [App\Http\Controllers\EmployeeProfileController::class, 'index'])->name('employee-profile.index');
     Route::get('/all-profiles', [App\Http\Controllers\EmployeeProfileController::class, 'allProfiles'])->name('employee-profile.allProfiles');

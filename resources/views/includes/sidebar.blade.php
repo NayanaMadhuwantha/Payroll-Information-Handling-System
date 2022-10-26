@@ -29,7 +29,7 @@
                 <li class="submenu">
                     <a href="{{ route('advance') }}"><i class="la la-money"></i> <span> Advance </span></a>
                 </li>
-               
+
                 <li class="submenu">
                     <a href="{{ route('loan') }}"><i class="la la-money"></i> <span> Loans </span></a>
                 </li>
@@ -58,7 +58,7 @@
                 @endif
                 {{-- @if(auth()->user()->position == 'admin') --}}
                 <li class="submenu">
-                    <a href="#"><i class="la la-money"></i> <span>Month Salary</span></a>
+                    <a href="{{ route('salarySlip').'?user_id='.auth()->user()->id }}"><i class="la la-money"></i> <span>Month Salary</span></a>
                 </li>
                 <li class="submenu">
                     <a href="{{ route('reports') }}"><i class="la la-briefcase"></i> <span> Reports </span></a>
