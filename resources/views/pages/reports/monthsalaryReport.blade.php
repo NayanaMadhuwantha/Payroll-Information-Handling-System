@@ -94,7 +94,7 @@
                                 </div>
                             </div>
 
-
+                            @if(auth()->user()->position == 'admin')
                             <div class="form-group row offset-md-2">
                                 <label class="col-form-label col-md-1">Prepared By</label>
                                 <div class="col-md-3">
@@ -115,7 +115,7 @@
                                     <input type="text" class="form-control border-0 border-bottom">
                                 </div>
                             </div>
-
+@endif
 
                         </div>
                     </div>

@@ -19,7 +19,7 @@
                 <li>
                     <a href="{{ route('leave') }}"><i class="la la-file-text"></i> <span>Leave</span></a>
                 </li>
-                @if(auth()->user()->position == 'admin')
+               
                 <li class="submenu">
                     <a href="{{ route('allowance') }}"><i class="la la-rocket"></i> <span> Allowance</span></a>
                 </li>
@@ -29,7 +29,7 @@
                 <li class="submenu">
                     <a href="{{ route('advance') }}"><i class="la la-money"></i> <span> Advance </span></a>
                 </li>
-
+                @if(auth()->user()->position == 'admin')
                 <li class="submenu">
                     <a href="{{ route('loan') }}"><i class="la la-money"></i> <span> Loans </span></a>
                 </li>

@@ -246,7 +246,7 @@
 <!--                        <button class="btn btn-success submit-btn">Generate Slip</button>
                         <button class="btn btn-danger submit-btn">Clear</button>-->
                     </div>
-                    <p>Logged As: Account analyst</p>
+                    <p>Logged User: {{ auth()->user()->position }}</p>
                 </div>
             </form>
         </div>

@@ -19,7 +19,7 @@
 
             <div class="row col-md-8 offset-md-2">
 
-                @if(auth()->user()->position == 'admin')
+             
                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6">
                     <a href="{{ route('advance') }}">
                         <div class="card dash-widget">
@@ -47,7 +47,6 @@
                         </div>
                     </a>
                 </div>
-                @endif
 
                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6">
                     <a href="{{ route('attendance') }}">
@@ -63,7 +62,7 @@
                     </a>
                 </div>
 
-                @if(auth()->user()->position == 'admin')
+             
                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6">
                     <a href="{{ route('deduction') }}">
                         <div class="card dash-widget">
@@ -77,7 +76,6 @@
                         </div>
                     </a>
                 </div>
-                @endif
 
                 @if(auth()->user()->position == 'admin')
                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6">

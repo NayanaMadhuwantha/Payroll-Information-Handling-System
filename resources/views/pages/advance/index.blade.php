@@ -21,16 +21,23 @@
 
 
         <ul class="nav nav-tabs nav-tabs-bottom align-center" id="myTab" role="tablist">
+            @if(auth()->user()->position == 'admin')
             <li class="nav-item" role="presentation">
                 <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#aproveadvance" role="tab" aria-controls="home" aria-selected="true">Aprove Advance</a>
             </li>
+            @endif
             <li class="nav-item" role="presentation">
+                @if(auth()->user()->position == 'admin')
                 <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#advancereport" role="tab" aria-controls="profile" aria-selected="false">Report</a>
+@else
+                <a class="nav-link active" id="profile-tab" data-bs-toggle="tab" href="#advancereport" role="tab" aria-controls="profile" aria-selected="false">Report</a>
+                @endif
             </li>
         </ul>
 
         <div class="tab-content">
 
+@if(auth()->user()->position == 'admin')
             <div class="tab-pane active" id="aproveadvance" role="tabpanel" aria-labelledby="aproveadvance-tab">
                 <!-- <h4>Expense Approval Settings</h4> -->
 
@@ -109,15 +116,16 @@
                 </div>
 
             </div>
+@endif
 
 
 
 
-
-
-
-            <div class="tab-pane" id="advancereport" role="tabpanel" aria-labelledby="advancereport-tab">
-
+@if(auth()->user()->position == 'admin')
+<div class="tab-pane" id="advancereport" role="tabpanel" aria-labelledby="advancereport-tab">
+@else
+            <div class="tab-pane active" id="advancereport" role="tabpanel" aria-labelledby="advancereport-tab">
+@endif
                 <div class="col-md-10 offset-md-1 mt-lg-3">
 
                     <form>

@@ -20,6 +20,7 @@
 
 
         <ul class="nav nav-tabs nav-tabs-bottom align-center" id="myTab" role="tablist">
+            @if(auth()->user()->position == 'admin')
             <li class="nav-item" role="presentation">
                 <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#overtime" role="tab" aria-controls="home" aria-selected="true">Overtime</a>
             </li>
@@ -29,13 +30,19 @@
             <li class="nav-item" role="presentation">
                 <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#othallowance" role="tab" aria-controls="profile" aria-selected="false">Other Allowance</a>
             </li>
+            @endif
             <li class="nav-item" role="presentation">
+                @if(auth()->user()->position == 'admin')
                 <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#report" role="tab" aria-controls="profile" aria-selected="false">Report</a>
+@else
+                <a class="nav-link active" id="profile-tab" data-bs-toggle="tab" href="#report" role="tab" aria-controls="profile" aria-selected="false">Report</a>
+                @endif
             </li>
         </ul>
 
         <div class="tab-content">
 
+            @if(auth()->user()->position == 'admin')
             <div class="tab-pane active" id="overtime" role="tabpanel" aria-labelledby="overtime-tab">
                 <!-- <h4>Expense Approval Settings</h4> -->
 
@@ -306,14 +313,16 @@
                     </form>
                 </div>
             </div>
+@endif
 
 
 
 
-
-
+@if(auth()->user()->position == 'admin')
             <div class="tab-pane" id="report" role="tabpane5" aria-labelledby="report-tab">
-
+@else
+            <div class="tab-pane active" id="report" role="tabpane5" aria-labelledby="report-tab">
+@endif
                 <div class="col-md-10 offset-md-1 mt-lg-3">
 
                     <form>

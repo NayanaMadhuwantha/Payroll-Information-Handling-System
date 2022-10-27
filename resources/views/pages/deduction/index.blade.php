@@ -26,14 +26,20 @@
             <!-- <li class="nav-item" role="presentation">
                 <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#deduction2" role="tab" aria-controls="profile" aria-selected="false">Deduction II</a>
             </li> -->
+            @if(auth()->user()->position == 'admin')
             <li class="nav-item" role="presentation">
                 <a class="nav-link active" id="profile-tab" data-bs-toggle="tab" href="#abesent" role="tab" aria-controls="profile" aria-selected="false">Absent</a>
             </li>
             <li class="nav-item" role="presentation">
                 <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#food" role="tab" aria-controls="profile" aria-selected="false">Food</a>
             </li>
+            @endif
             <li class="nav-item" role="presentation">
+                @if(auth()->user()->position == 'admin')
                 <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#report" role="tab" aria-controls="profile" aria-selected="false">Report</a>
+                @else
+                <a class="nav-link active" id="profile-tab" data-bs-toggle="tab" href="#report" role="tab" aria-controls="profile" aria-selected="false">Report</a>
+                @endif
             </li>
         </ul>
 
@@ -246,7 +252,7 @@
 
 
 
-
+            @if(auth()->user()->position == 'admin')
             <div class="tab-pane active" id="abesent" role="tabpane3" aria-labelledby="abesent-tab">
                 <!-- <h4>Expense Approval Settings</h4> -->
 
@@ -451,13 +457,16 @@
                     </form>
                 </div>
             </div>
+            @endif
 
 
 
 
-
-
+            @if(auth()->user()->position == 'admin')
             <div class="tab-pane" id="report" role="tabpane5" aria-labelledby="report-tab">
+            @else
+            <div class="tab-pane active" id="report" role="tabpane5" aria-labelledby="report-tab">
+            @endif
 
                 <div class="col-md-10 offset-md-1 mt-lg-3">
 
@@ -482,10 +491,12 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            @if(auth()->user()->position == 'admin')
                             <label class="col-form-label col-md-3">Search Employee No</label>
                             <div class="col-md-3">
                                 <input type="text" class="form-control">
                             </div>
+                            @endif
                             <label class="col-form-label col-md-3">Total Other Deductions: Rs. 0.00</label>
                         </div>
 
