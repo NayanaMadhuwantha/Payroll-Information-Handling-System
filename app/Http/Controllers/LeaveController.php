@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Helper;
 use App\Models\AvailableLeave;
 use App\Models\Leave;
 use App\Models\LeaveType;
+use App\Models\Notification;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -108,6 +110,9 @@ class LeaveController extends Controller
         $approved_leaves = Leave::where('user_id',Auth::user()->id)->where('status','=','Approved')->get();
         $all_leaves = Leave::where('user_id',Auth::user()->id)->get();
         $message = "Leave(s) applied successfully!";
+
+        Helper::createNotification($user->username." applied a leave on ".$start_date);
+
         return view('pages.leave.index')->with([
             'available_leaves'=>$available_leaves,
             'users'=>$users,

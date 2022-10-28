@@ -179,14 +179,24 @@ class SalaryController extends Controller
                 $salary->gross_wage = $allowances-$deductions;
                 $salary->net_salary = $basic_salary - ($basic_salary * 8 /100) + $allowances - $deductions;
                 $salary->total_salary = $basic_salary + $allowances - $deductions + ($basic_salary * 23 /100);
-                $salary->created_at = Carbon::createFromFormat('m/d/Y', '1/'.$month.'/2022')
+                $salary->created_at = Carbon::createFromFormat('m/d/Y', $month.'/1/2022')
                     ->firstOfMonth()
                     ->format('Y-m-d');
                 $salary->save();
             }
         }
 
+        $user_id = Auth::user()->id;
 
+        if ($request->has('user_id')){
+            $user_id = $request->input('user_id');
+        }
+
+        $month = 1;
+
+        if ($request->has('month')){
+            $month = $request->input('month');
+        }
 
         $user = User::find($user_id);
         $users = User::getAllUsers();
@@ -204,7 +214,7 @@ class SalaryController extends Controller
         $basic = Grade::find($grade_id)->basic_salary;
 
         $salary = new Salary();
-        $salary->user_id = $request->input('user');
+        $salary->user_id = $request->input('user_id');
         $salary->attendance_allowance = $request->input('attendance_allowance');
         $salary->other_allowance = $request->input('other_allowance');
         $salary->normal_ot = $request->input('normal_ot');
@@ -220,9 +230,9 @@ class SalaryController extends Controller
         $salary->gross_wage = $allowances-$deductions;
         $salary->net_salary = $basic - ($basic * 8 /100) + $allowances - $deductions;
         $salary->total_salary = $basic + $allowances - $deductions + ($basic * 23 /100);
-        $salary->created_at = Carbon::createFromFormat('m/d/Y', '1/'.$month.'/2022')
-                            ->firstOfMonth()
-                            ->format('Y-m-d');
+        $salary->created_at = Carbon::createFromFormat('m/d/Y', $month.'/1/2022')
+            ->firstOfMonth()
+            ->format('Y-m-d');
         $salary->save();
 
 

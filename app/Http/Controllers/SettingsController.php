@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\FileHelper;
+use App\Helpers\Helper;
 use App\Models\AvailableLeave;
 use App\Models\Grade;
 use App\Models\LeaveType;
@@ -82,6 +83,8 @@ class SettingsController extends Controller
         }
 
         $user->save();
+
+        Helper::createNotification("New user created. Username:".$user->username.", Email:".$user->email);
 
         $leave_types = LeaveType::all();
 

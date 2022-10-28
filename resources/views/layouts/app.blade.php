@@ -122,6 +122,21 @@
                 </div>
             </li>
 
+            <li class="nav-item dropdown has-arrow main-drop">
+                <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                    {{-- <span class="user-img"><img src="{{ asset('images/profiles/avatar-21.jpg') }}" alt="">
+                        <span class="status online"></span></span> --}}
+                    @if(auth()->user())
+                        <span style="">Notifications &nbsp;</span>
+                    @endif
+                </a>
+                <div class="dropdown-menu">
+                    @foreach($notifications as $notification)
+                        <a class="dropdown-item">{{ $notification->notification }}</a>
+                    @endforeach
+                </div>
+            </li>
+
 
             <li class="nav-item dropdown has-arrow main-drop">
                 <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">

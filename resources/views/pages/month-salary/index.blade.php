@@ -49,7 +49,7 @@
                         <div class="form-group row mb-30">
                             <label class="col-form-label col-md-4">Employee</label>
                             <div class="col-md-8">
-                                <select class="select form-select" name="user" id="user">
+                                <select class="select form-select" name="user_id" id="user">
                                     @foreach($users as $user)
                                         <option value="{{ $user->id }}"
                                                 data-rate="{{ $user->grade->ot_rate }}"
