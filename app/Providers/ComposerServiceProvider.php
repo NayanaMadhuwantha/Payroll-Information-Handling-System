@@ -26,7 +26,12 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('layouts.app', function($view){
-            $notifications = Notification::where('user_id',auth()->user()->id)->orderBy('id','DESC')->limit(10)->get();
+            if(auth()->user()){
+                $user_id = auth()->user()->id;
+            }else{
+                $user_id = null;
+            }
+            $notifications = Notification::where('user_id',$user_id)->orderBy('id','DESC')->limit(10)->get();
             $view->with('notifications', $notifications);
         });
     }
